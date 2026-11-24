@@ -1,0 +1,2544 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Special Notes — Module 4 | O.Nursing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=JetBrains+Mono:wght@500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+/* ---- v3 design system: the research-flashcards template's exact layout,
+   re-skinned in the memo's Navy Medical LIGHT palette ---- */
+:root{
+  --bg-0:#EAF2F8; --bg-1:#F2F7FB;
+  --glass:#ffffff; --glass-brd:#C9D9E8; --glass-brd-hover:#5B8DB8;
+  --txt-hi:#22303C; --txt-mid:#5A6B7C; --txt-lo:#8A9BAE;
+  --navy:#1B3A5C; --navy-d:#122A44; --navy-dim:rgba(27,58,92,0.08); --navy-glow:rgba(91,141,184,0.35);
+  --sky:#5B8DB8; --sky-dim:rgba(91,141,184,0.12);
+  --green:#2E7D4F; --green-dim:#E6F4EC;
+  --red:#B3261E; --red-dim:#FDECEA;
+  --amber:#8A6D00; --amber-dim:#FDF3D7;
+  --radius:18px; --radius-sm:12px;
+  /* timer-snippet injected styles read these vars (navy values on purpose) */
+  --gold:#5B8DB8; --gold-l:#EAF2F8; --burg:#1B3A5C;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html,body{height:100%;}
+body{
+  font-family:'Tajawal',sans-serif;
+  background:
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(91,141,184,0.20), transparent 60%),
+    radial-gradient(ellipse 900px 600px at 105% 10%, rgba(27,58,92,0.10), transparent 55%),
+    radial-gradient(ellipse 1200px 800px at 50% 120%, rgba(91,141,184,0.12), transparent 60%),
+    var(--bg-0);
+  color:var(--txt-hi);
+  min-height:100vh;
+  overflow-x:hidden;
+  padding-top:38px;
+}
+.mono{font-family:'JetBrains Mono',monospace;}
+.bg-pulse{position:fixed; inset:0; z-index:0; pointer-events:none; opacity:0.85;
+  display:flex; align-items:center; justify-content:center;}
+.bg-pulse svg{width:100%; height:100%;}
+.giant-target{transform-box:fill-box; transform-origin:center; animation:targetBreathe 7s ease-in-out infinite;}
+@keyframes targetBreathe{0%,100%{transform:scale(1);}50%{transform:scale(1.06);}}
+.target-spin{transform-box:fill-box; transform-origin:center; animation:targetSpin 22s linear infinite;}
+@keyframes targetSpin{to{transform:rotate(360deg);}}
+
+.app{position:relative; z-index:1; min-height:100vh; display:flex; flex-direction:column;}
+.wrap{max-width:760px; margin:0 auto; padding:0 20px; width:100%;}
+#tq-host{padding:0 20px;}
+#tq-host:not(:empty){padding-top:48px;}
+.topbar{padding:22px 0 14px; display:flex; align-items:center; justify-content:space-between;}
+.brand{display:flex; align-items:center; gap:10px;}
+.brand-mark{width:34px; height:34px; border-radius:10px; font-size:17px;
+  background:linear-gradient(135deg, var(--navy), var(--sky));
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 0 24px var(--navy-glow); flex-shrink:0;}
+.brand-text{display:flex; flex-direction:column; line-height:1.15;}
+.brand-text b{font-size:15px; font-weight:800; letter-spacing:.2px;}
+.brand-text span{font-size:11px; color:var(--txt-lo); font-family:'JetBrains Mono',monospace; letter-spacing:.3px;}
+.pill-btn{background:var(--glass); border:1px solid var(--glass-brd); color:var(--txt-mid);
+  padding:8px 16px; border-radius:999px; font-family:'Tajawal',sans-serif; font-size:13px; font-weight:500;
+  cursor:pointer; transition:.18s;}
+.pill-btn:hover{border-color:var(--glass-brd-hover); color:var(--txt-hi); background:rgba(27,58,92,0.04);}
+.pill-btn:active{transform:scale(0.96);}
+.pill-btn:disabled{opacity:0.35; cursor:not-allowed;}
+.screen{display:none; flex:1; flex-direction:column;}
+.screen.active{display:flex;}
+
+.hero{padding:18px 0 8px;}
+.hero h1{font-size:26px; font-weight:800; line-height:1.35; margin-bottom:6px;}
+.hero h1 .accent{background:linear-gradient(90deg, var(--navy), var(--sky));
+  -webkit-background-clip:text; background-clip:text; color:transparent;}
+.hero p{color:var(--txt-mid); font-size:14px;}
+.stats-row{display:flex; gap:10px; margin:18px 0 22px;}
+.stat-chip{flex:1; background:var(--glass); border:1px solid var(--glass-brd); border-radius:var(--radius-sm);
+  padding:12px 14px;}
+.stat-chip .n{font-family:'JetBrains Mono',monospace; font-size:20px; font-weight:600;}
+.stat-chip .l{font-size:11.5px; color:var(--txt-lo); margin-top:2px;}
+.stat-chip.navy .n{color:var(--navy);}
+.stat-chip.sky .n{color:var(--sky);}
+.stat-chip.green .n{color:var(--green);}
+.section-label{display:flex; align-items:center; justify-content:space-between; margin:4px 0 12px;
+  font-size:13px; color:var(--txt-lo); font-weight:500;}
+.section-label .sel-all{color:var(--sky); cursor:pointer; font-size:12.5px; font-weight:600;
+  background:none; border:none; font-family:'Tajawal',sans-serif;}
+.topic-list{display:grid; grid-template-columns:1fr 1fr; gap:10px; padding-bottom:16px;}
+.topic-card{position:relative; background:var(--glass); border:1px solid var(--glass-brd);
+  border-radius:var(--radius-sm); padding:13px 14px; cursor:pointer; transition:.16s;
+  display:flex; flex-direction:column; gap:10px;}
+.topic-card:hover{border-color:var(--glass-brd-hover); background:rgba(27,58,92,0.03);}
+.topic-card.checked{border-color:var(--navy);
+  background:linear-gradient(90deg, rgba(27,58,92,0.07), rgba(91,141,184,0.05));}
+.topic-card-top{display:flex; align-items:center; justify-content:space-between;}
+.topic-check{width:20px; height:20px; border-radius:6px; border:2px solid var(--glass-brd-hover);
+  flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:.16s;}
+.topic-card.checked .topic-check{background:linear-gradient(135deg, var(--navy), var(--sky)); border-color:transparent;}
+.topic-check svg{width:12px; height:12px; opacity:0; transition:.16s;}
+.topic-card.checked .topic-check svg{opacity:1;}
+.topic-info{min-width:0;}
+.topic-info .t-name{font-size:13px; font-weight:600; margin-bottom:3px; line-height:1.3;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+  min-height:calc(1.3em * 2);}
+.topic-info .t-meta{font-size:10.5px; color:var(--txt-lo); font-family:'JetBrains Mono',monospace;}
+.topic-progress-ring{width:30px; height:30px; flex-shrink:0; position:relative;}
+.topic-progress-ring svg{transform:rotate(-90deg); width:100%; height:100%;}
+.topic-progress-ring .bg-ring{fill:none; stroke:rgba(27,58,92,0.10); stroke-width:3;}
+.topic-progress-ring .fg-ring{fill:none; stroke:var(--green); stroke-width:3; stroke-linecap:round; transition:stroke-dashoffset .3s;}
+.topic-progress-ring .pct{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  font-size:9px; font-family:'JetBrains Mono',monospace; color:var(--txt-mid);}
+.floating-bar{position:fixed; bottom:0; left:0; right:0; z-index:5;
+  padding:14px 20px calc(16px + env(safe-area-inset-bottom));
+  background:linear-gradient(180deg, transparent, rgba(234,242,248,0.88) 25%, var(--bg-0) 60%);}
+.floating-bar-inner{max-width:760px; margin:0 auto; display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
+.floating-bar-inner .sel-count{order:4;}
+.floating-bar-inner #btn-start{order:5;}
+.sel-count{font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--txt-mid); white-space:nowrap;}
+.btn-primary{flex:1; background:linear-gradient(90deg, var(--navy), var(--sky)); color:#fff; border:none;
+  padding:15px 20px; border-radius:999px; font-family:'Tajawal',sans-serif; font-size:15px; font-weight:700;
+  cursor:pointer; transition:.16s; box-shadow:0 8px 30px -8px var(--navy-glow);
+  display:flex; align-items:center; justify-content:center; gap:8px;}
+.btn-primary:active{transform:scale(0.98);}
+.btn-primary:disabled{opacity:0.35; cursor:not-allowed; box-shadow:none;}
+.btn-primary svg{width:16px; height:16px;}
+
+/* ---- SETTINGS ---- */
+.settings-card{background:var(--glass); border:1px solid var(--glass-brd); border-radius:var(--radius);
+  padding:22px; margin-bottom:16px;}
+.settings-card h3{font-size:14px; font-weight:700; margin-bottom:14px; color:var(--txt-hi);
+  display:flex; align-items:center; gap:8px;}
+.settings-card h3 .num{width:20px; height:20px; border-radius:6px; background:var(--glass-brd);
+  display:flex; align-items:center; justify-content:center; font-size:11px;
+  font-family:'JetBrains Mono',monospace; color:var(--txt-mid);}
+.opt-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
+.opt-btn{background:rgba(27,58,92,0.03); border:1px solid var(--glass-brd); border-radius:11px;
+  padding:12px 10px; text-align:center; font-size:13px; font-weight:600; color:var(--txt-mid);
+  cursor:pointer; transition:.15s; font-family:'Tajawal',sans-serif;}
+.opt-btn:hover{border-color:var(--glass-brd-hover);}
+.opt-btn.active{background:linear-gradient(135deg, rgba(27,58,92,0.12), rgba(91,141,184,0.10));
+  border-color:var(--navy); color:var(--txt-hi);}
+.queue-note{font-size:12px; color:var(--txt-lo); margin-top:12px; font-family:'JetBrains Mono',monospace;}
+.progress-summary{display:flex; align-items:center; gap:14px; margin-bottom:6px;}
+.ring-big{width:56px; height:56px; position:relative; flex-shrink:0;}
+.ring-big svg{transform:rotate(-90deg); width:100%; height:100%;}
+.ring-big .bg-ring{fill:none; stroke:rgba(27,58,92,0.10); stroke-width:5;}
+.ring-big .fg-ring{fill:none; stroke:url(#ringGrad); stroke-width:5; stroke-linecap:round; transition:stroke-dashoffset .4s;}
+.ring-big .pct{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  font-family:'JetBrains Mono',monospace; font-weight:600; font-size:13px;}
+.progress-text b{font-size:15px; display:block;}
+.progress-text span{font-size:12.5px; color:var(--txt-lo);}
+.clear-progress{margin-right:auto; background:none; border:none; color:var(--txt-lo); font-size:12px;
+  cursor:pointer; display:flex; align-items:center; gap:5px; font-family:'Tajawal',sans-serif;}
+.clear-progress:hover{color:var(--red);}
+
+/* ---- STUDY ---- */
+.study-header{padding:16px 0 10px; display:flex; align-items:center; gap:12px;}
+.exit-btn{width:38px; height:38px; border-radius:11px; background:var(--glass); border:1px solid var(--glass-brd);
+  display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; transition:.15s;}
+.exit-btn:hover{border-color:var(--red);}
+.exit-btn svg{width:16px; height:16px; stroke:var(--txt-mid);}
+.exit-btn:hover svg{stroke:var(--red);}
+.qbar-track{flex:1; height:7px; border-radius:99px; background:rgba(27,58,92,0.10); overflow:hidden; position:relative;}
+.qbar-fill{height:100%; border-radius:99px; background:linear-gradient(90deg, var(--navy), var(--sky)); transition:width .3s;}
+.qcounter{font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--txt-mid); white-space:nowrap; flex-shrink:0; direction:ltr;}
+.card-meta{display:flex; align-items:center; gap:8px; margin:6px 0 12px; flex-wrap:wrap;}
+.card-sec{font-size:11.5px; color:var(--txt-lo); font-family:'JetBrains Mono',monospace;}
+.ext-star{display:inline-flex; align-items:center; gap:4px; background:var(--amber-dim); color:var(--amber);
+  font-size:10.5px; font-weight:700; padding:3px 10px; border-radius:999px;}
+.known-badge{display:inline-flex; align-items:center; gap:4px; background:var(--green-dim); color:var(--green);
+  font-size:10.5px; font-weight:700; padding:3px 10px; border-radius:999px;}
+.review-badge{display:inline-flex; align-items:center; gap:4px; background:var(--sky-dim); color:var(--sky);
+  font-size:10.5px; font-weight:700; padding:3px 10px; border-radius:999px;}
+
+.flashcard{perspective:1400px; cursor:pointer; flex:1; min-height:380px; max-height:58vh;}
+.fc-inner{position:relative; width:100%; height:100%; min-height:380px; max-height:58vh;
+  transform-style:preserve-3d; transition:transform .55s cubic-bezier(.2,.7,.3,1.15);}
+.flashcard.flipped .fc-inner{transform:rotateY(180deg);}
+.fc-face{position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden;
+  background:var(--glass); border:1px solid var(--glass-brd); border-radius:var(--radius);
+  padding:26px 24px; overflow-y:auto; display:flex; flex-direction:column;}
+.fc-front{align-items:center; justify-content:center; text-align:center;}
+.fc-front .qnum{font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--navy); margin-bottom:12px; font-weight:600;}
+.fc-front .qtitle{font-size:19px; font-weight:700; line-height:1.7; direction:ltr;}
+.fc-front .tap-hint{margin-top:22px; font-size:12px; color:var(--txt-lo); display:flex; align-items:center; gap:6px; justify-content:center;}
+.fc-front .fc-src{margin-top:14px;}
+.fc-back{transform:rotateY(180deg); direction:ltr; text-align:left;}
+.fc-back .tap-hint{margin-top:16px; font-size:12px; color:var(--txt-lo); text-align:center;}
+.ans-sub{font-size:13.5px; font-weight:800; color:var(--navy); margin:14px 0 6px;}
+.ans-sub:first-child{margin-top:0;}
+.fc-back p{font-size:14px; line-height:1.65; color:var(--txt-mid); margin:6px 0;}
+.fc-back ol{margin:6px 0 6px 4px; padding-left:20px;}
+.fc-back ol li{font-size:14px; line-height:1.6; color:var(--txt-hi); margin-bottom:6px; padding-left:4px;}
+.fc-back ol li::marker{color:var(--navy); font-weight:700; font-family:'JetBrains Mono',monospace;}
+.am-opts{margin-top:10px; padding-inline-start:22px; direction:ltr; text-align:left; line-height:1.8; font-size:15px;}
+.am-opts li{margin-top:2px;}
+.mark-row{display:flex; gap:10px; padding:16px 0 calc(8px + env(safe-area-inset-bottom));}
+.mark-btn{flex:1; padding:15px; border-radius:14px; border:1.5px solid var(--glass-brd); background:var(--glass);
+  color:var(--txt-hi); font-family:'Tajawal',sans-serif; font-size:14.5px; font-weight:700; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; gap:8px; transition:.15s;}
+.mark-btn:active{transform:scale(0.97);}
+.mark-btn.know{border-color:var(--green); background:var(--green-dim);}
+.mark-btn.know:hover{background:rgba(46,125,79,0.14);}
+.mark-btn.dunno{border-color:var(--red); background:var(--red-dim);}
+.mark-btn.dunno:hover{background:rgba(179,38,30,0.12);}
+.study-nav{display:flex; gap:10px; padding-bottom:calc(16px + env(safe-area-inset-bottom));}
+.nav-btn{flex:1; padding:13px; border-radius:14px; border:1px solid var(--glass-brd); background:var(--glass);
+  color:var(--txt-hi); font-family:'Tajawal',sans-serif; font-size:14px; font-weight:700; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; gap:6px; transition:.15s;}
+.nav-btn:hover{border-color:var(--glass-brd-hover);}
+.nav-btn:disabled{opacity:0.3; cursor:not-allowed;}
+.nav-btn svg{width:15px; height:15px;}
+
+/* ---- QUIZ (scored) — same flip-card design as the study screen ---- */
+.fc-front.quiz-front{align-items:stretch; justify-content:flex-start; text-align:left;}
+.fc-front.quiz-front .qnum{text-align:center;}
+.fc-front.quiz-front .tap-hint{justify-content:center;}
+.fc-back.quiz-back{direction:rtl; text-align:right;}
+.q{font-size:18px; font-weight:700; line-height:1.8; direction:ltr; text-align:left;}
+.q .ar-note{font-size:14px; color:var(--txt-mid); font-weight:500; direction:rtl; text-align:right; display:block; margin-top:4px;}
+.qsrc{margin-top:10px; direction:ltr; text-align:left;}
+.opts{margin-top:14px; display:flex; flex-direction:column; gap:10px;}
+.opt{border:1.5px solid #C9D9E8; background:#fff; border-radius:12px; padding:12px 14px; font-size:16px; cursor:pointer; text-align:left; direction:ltr; font-family:inherit; line-height:1.5;}
+.opt:hover{border-color:var(--sky);}
+.opt.correct{border-color:var(--green); background:var(--green-dim);}
+.opt.wrong{border-color:var(--red); background:var(--red-dim);}
+.opt:disabled{cursor:default;}
+.tf{display:flex; gap:10px; margin-top:14px;}
+.tf .opt{flex:1; text-align:center; font-weight:800; font-size:17px;}
+.hintbtn{background:var(--pale,#EAF2F8); color:var(--navy-d); border:1px solid var(--sky); border-radius:10px; padding:8px 14px; font-size:14px; font-weight:700; cursor:pointer; font-family:inherit; margin-top:14px;}
+.hint{display:none; background:#FFFBE6; border:1px dashed var(--sky); border-radius:10px; padding:10px 14px; margin-top:10px; font-size:14px; line-height:1.8; direction:rtl; text-align:right;}
+.hint.show{display:block;}
+.explain{display:none; border-radius:10px; padding:12px 14px; margin-top:12px; font-size:14.5px; line-height:1.9;}
+.explain.show{display:block;}
+.explain.ok{background:var(--green-dim); border:1px solid var(--green);}
+.explain.no{background:var(--red-dim); border:1px solid var(--red);}
+.explain b{color:var(--navy);}
+.model{display:none; background:var(--bg-1); border:1px solid #B9CBDD; border-radius:10px; padding:12px 14px; margin-top:12px; font-size:14.5px; line-height:1.9; white-space:pre-line;}
+.model.show{display:block;}
+.badge{font-size:12px; font-weight:800; border-radius:12px; padding:3px 10px;}
+.badge.easy{background:#E6F4EC; color:var(--green);}
+.badge.med{background:#FDF3D7; color:#8A6D00;}
+.badge.hard{background:#FDECEA; color:var(--red);}
+/* source tag (on every question) */
+.srctag{display:inline-block; background:var(--pale,#EAF2F8); color:var(--navy); border:1px solid var(--sky); border-radius:999px; padding:3px 10px; font-size:12px; font-weight:700; line-height:1.5;}
+.srctag.special{background:var(--navy); color:#fff; border-color:var(--navy);}
+/* level filter */
+.levels{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px;}
+.lvl{border:1.5px solid var(--sky); background:#fff; color:var(--navy); border-radius:20px; padding:7px 16px; font-size:14px; font-weight:700; cursor:pointer; font-family:inherit;}
+.lvl.on{background:var(--navy); color:#fff; border-color:var(--navy);}
+/* generic buttons (also used by the timer snippet's injected time-up card) */
+.card{background:#fff; border:1px solid #C9D9E8; border-radius:16px; padding:20px; margin-top:16px; box-shadow:0 2px 10px rgba(27,58,92,.07);}
+.btn{display:block; width:100%; background:var(--navy); color:#fff; border:none; border-radius:12px; padding:14px; font-size:17px; font-weight:800; cursor:pointer; font-family:inherit; margin-top:16px;}
+.btn:hover{background:var(--navy-d);}
+.btn.ghost{background:#fff; color:var(--navy); border:1.5px solid var(--navy); margin-top:10px;}
+.btn:disabled{opacity:.5; cursor:default;}
+.small{font-size:13px; color:var(--txt-mid); text-align:center; margin-top:10px; line-height:1.7;}
+.legend{background:var(--pale,#EAF2F8); border:1px solid #B9CBDD; border-radius:12px; padding:12px 14px; margin-top:14px; font-size:13.5px; line-height:2; color:var(--txt-hi);}
+.legend b{color:var(--navy);}
+.legend .srctag{margin:0 2px;}
+/* timer-snippet injected bar: keep it inside the page margins on the quiz screen */
+/* timer-snippet injected time-up card lives in #tq-host (outside the screens) */
+
+/* ---- SUMMARY / RESULTS ---- */
+.results-hero{text-align:center; padding:36px 0 18px;}
+.results-ring{width:150px; height:150px; margin:0 auto 20px; position:relative;}
+.results-ring svg{transform:rotate(-90deg); width:100%; height:100%;}
+.results-ring .bg-ring{fill:none; stroke:rgba(27,58,92,0.08); stroke-width:9;}
+.results-ring .fg-ring{fill:none; stroke:url(#ringGradBig); stroke-width:9; stroke-linecap:round;
+  transition:stroke-dashoffset 1s cubic-bezier(.2,.8,.2,1);}
+.results-ring .pct-big{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;}
+.results-ring .pct-big b{font-size:36px; font-family:'JetBrains Mono',monospace; font-weight:700;}
+.results-ring .pct-big span{font-size:11.5px; color:var(--txt-lo); margin-top:2px;}
+.results-hero h2{font-size:19px; font-weight:800; margin-bottom:6px;}
+.results-hero p{color:var(--txt-mid); font-size:13.5px;}
+.results-stats{display:flex; gap:10px; margin:20px 0;}
+.rstat{flex:1; text-align:center; background:var(--glass); border:1px solid var(--glass-brd); border-radius:14px;
+  padding:16px 10px;}
+.rstat .n{font-family:'JetBrains Mono',monospace; font-size:22px; font-weight:700;}
+.rstat .l{font-size:11.5px; color:var(--txt-lo); margin-top:3px;}
+.rstat.known .n{color:var(--green);}
+.rstat.unknown .n{color:var(--red);}
+.results-actions{display:flex; gap:10px;}
+.review-section{margin:26px 0 100px;}
+.review-section h3{font-size:14px; font-weight:700; margin-bottom:12px; display:flex; align-items:center; gap:8px;}
+.review-item{background:var(--glass); border:1px solid var(--glass-brd); border-radius:14px; padding:16px;
+  margin-bottom:10px; cursor:pointer;}
+.review-item .rq{font-size:13.5px; font-weight:600; line-height:1.55; direction:ltr; text-align:left;}
+.review-item .ra{display:none; margin-top:10px; border-top:1px solid var(--glass-brd); padding-top:10px;
+  direction:ltr; text-align:left;}
+.review-item.open .ra{display:block;}
+.review-item .ra .ans-sub{font-size:12.5px;}
+.review-item .ra p{font-size:12.5px; line-height:1.6; color:var(--txt-mid); margin:5px 0;}
+.review-item .ra ol{margin:5px 0; padding-left:18px;}
+.review-item .ra ol li{font-size:12.5px; line-height:1.55; margin-bottom:5px;}
+.review-item .ra ol li::marker{color:var(--navy); font-weight:700;}
+.empty-review{text-align:center; padding:30px 20px; color:var(--txt-lo); font-size:13.5px;}
+.footer-credit{text-align:center; padding:26px 0 calc(30px + env(safe-area-inset-bottom));
+  font-size:11.5px; color:var(--txt-lo); font-family:'JetBrains Mono',monospace;}
+.res-line{text-align:center; font-size:16px; line-height:2;}
+.res-line b{color:var(--navy);}
+table.res{width:100%; border-collapse:collapse; margin-top:12px; font-size:14px; background:#fff;}
+table.res td, table.res th{border:1px solid #C9D9E8; padding:8px; text-align:center;}
+table.res th{background:var(--navy); color:#fff;}
+footer{text-align:center; font-size:12px; color:var(--txt-mid); margin-top:26px; line-height:1.8;}
+footer b{color:var(--navy);}
+.hidden{display:none !important;}
+/* ---- fixed top strip: dua + rotating dhikr ---- */
+.top-strip{position:fixed; top:0; left:0; right:0; z-index:60;
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:9px 14px;
+  background:linear-gradient(90deg, rgba(27,58,92,0.10), rgba(91,141,184,0.08));
+  border-bottom:1px solid var(--glass-brd);}
+.top-strip .dua{font-size:11px; color:var(--txt-mid); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.top-strip .dua b{color:var(--navy);}
+.dhikr{font-size:11px; font-weight:700; color:var(--amber); white-space:nowrap; transition:opacity .45s; flex-shrink:0;}
+.dhikr.fade{opacity:0;}
+/* ---- requeue time chips ---- */
+.time-row{display:flex; gap:8px; margin-top:10px; flex-wrap:wrap;}
+.time-row.disabled{opacity:0.3; pointer-events:none;}
+.time-chip{background:rgba(27,58,92,0.03); border:1px solid var(--glass-brd); border-radius:999px;
+  padding:8px 16px; font-size:12.5px; color:var(--txt-mid); cursor:pointer; transition:.15s;
+  font-family:'JetBrains Mono',monospace;}
+.time-chip.active{background:var(--sky-dim); border-color:var(--sky); color:var(--txt-hi);}
+/* ---- missed bin ---- */
+.missed-bin{display:flex; align-items:center; justify-content:space-between; gap:10px;
+  background:linear-gradient(90deg, rgba(138,109,0,0.10), rgba(179,38,30,0.06));
+  border:1px solid rgba(138,109,0,0.35); border-radius:var(--radius-sm);
+  padding:14px 16px; margin-bottom:12px;}
+.missed-bin b{font-size:13.5px; display:block;}
+.missed-bin span{font-size:11.5px; color:var(--txt-lo); font-family:'JetBrains Mono',monospace;}
+.toast{position:fixed; bottom:110px; left:50%; transform:translateX(-50%) translateY(10px); z-index:70;
+  background:rgba(27,58,92,0.95); border:1px solid var(--navy); color:#fff;
+  font-size:13px; font-weight:600; padding:10px 20px; border-radius:999px;
+  opacity:0; pointer-events:none; transition:.3s; white-space:nowrap;}
+.toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-thumb{background:rgba(27,58,92,0.20); border-radius:99px;}
+@media (max-width:400px){
+  .fc-front .qtitle{font-size:16.5px;}
+  .hero h1{font-size:22px;}
+}
+
+.brand-signature{font-family:'Great Vibes',cursive;font-size:40px;line-height:1.2;
+  text-align:center;color:#1B3A5C;padding:14px 10px 2px;position:relative;z-index:2;
+  text-shadow:0 2px 18px rgba(91,141,184,.35);}
+.brand-sub{text-align:center;font-size:11px;color:var(--txt-lo);letter-spacing:2px;
+  position:relative;z-index:2;padding-bottom:4px;}
+.watermark{position:fixed;inset:0;z-index:999;pointer-events:none;display:flex;
+  align-items:center;justify-content:center;overflow:hidden;}
+.watermark span{font-family:'Great Vibes',cursive;font-size:72px;color:rgba(27,58,92,.055);
+  transform:rotate(-28deg);white-space:nowrap;user-select:none;}
+.ans-box{border:1px solid rgba(27,58,92,.35);background:rgba(27,58,92,.05);
+  border-radius:14px;padding:16px 18px;}
+.ans-label{font-size:13px;font-weight:800;color:var(--navy);margin-bottom:10px;}
+.fc-back{overflow-y:auto;}
+@media(max-width:520px){.brand-signature{font-size:32px}.watermark span{font-size:48px}}
+/* O.Nursing — QR-only: no copying, no printing */
+body{ -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none; }
+textarea, input{ -webkit-user-select:text; -moz-user-select:text; -ms-user-select:text; user-select:text; }
+#print-note{ display:none; }
+@media print{ body *{ display:none !important; } #print-note{ display:block !important; text-align:center; font-size:16px; font-weight:700; color:#1B3A5C; margin-top:40%; } }
+</style>
+</head>
+<body>
+
+<div class="bg-pulse">
+  <svg viewBox="0 0 400 800" preserveAspectRatio="xMidYMid slice">
+    <g class="giant-target" transform="translate(200,400)">
+      <circle r="230" fill="#1B3A5C" opacity="0.04"/>
+      <circle r="230" fill="none" stroke="#1B3A5C" stroke-width="2" opacity="0.14"/>
+      <circle r="184" fill="#5B8DB8" opacity="0.05"/>
+      <circle r="184" fill="none" stroke="#5B8DB8" stroke-width="2" opacity="0.18"/>
+      <circle r="138" fill="#1B3A5C" opacity="0.05"/>
+      <circle r="138" fill="none" stroke="#1B3A5C" stroke-width="2" opacity="0.16"/>
+      <circle r="92" fill="#5B8DB8" opacity="0.06"/>
+      <circle r="92" fill="none" stroke="#5B8DB8" stroke-width="2" opacity="0.20"/>
+      <circle r="46" fill="#1B3A5C" opacity="0.06"/>
+      <circle r="46" fill="none" stroke="#1B3A5C" stroke-width="2" opacity="0.20"/>
+      <circle r="14" fill="#1B3A5C" opacity="0.35"/>
+      <g class="target-spin">
+        <circle r="255" fill="none" stroke="#5B8DB8" stroke-width="1.5" stroke-dasharray="4 14" opacity="0.20"/>
+      </g>
+    </g>
+  </svg>
+</div>
+
+<div class="top-strip">
+  <span class="dhikr" id="dhikr">سبحان الله وبحمده</span>
+  <span class="dua">لا تنسوا الدعاء لنا ولوالدينا — <b>بالتوفيق 🤲</b></span>
+</div>
+
+<div class="watermark"><span>O.Nursing</span></div>
+
+<!-- timer-snippet time-up card host: FIRST .wrap in the document, OUTSIDE the
+     screens, so the card stays visible when the quiz screen is hidden on expiry -->
+<div class="wrap" id="tq-host"></div>
+
+<div class="app">
+  <div class="brand-signature">O.Nursing</div>
+  <div class="brand-sub">SPECIAL NOTES • MODULE 4</div>
+
+  <!-- =============== HOME =============== -->
+  <section id="screen-home" class="screen active">
+    <div class="wrap">
+      <div id="home">
+        <div class="topbar">
+          <div class="brand">
+            <div class="brand-mark">🩺</div>
+            <div class="brand-text">
+              <b>Special Notes — Module 4</b>
+              <span>Normal and Abnormal Postpartum • Maternity</span>
+            </div>
+          </div>
+          <button class="pill-btn" id="btn-reset-all">مسح كل التقدم</button>
+        </div>
+
+        <div class="hero">
+          <h1>Module 4: <span class="accent">Normal and Abnormal Postpartum</span></h1>
+          <p>Special Notes — Module 4 • تمريض النسا والتوليد — اختبار موقوت (36 سؤال) + بطاقات مراجعة (88 بطاقة)</p>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-chip navy">
+            <div class="n" id="stat-total">36</div>
+            <div class="l">سؤال اختبار</div>
+          </div>
+          <div class="stat-chip sky">
+            <div class="n" id="stat-topics">88</div>
+            <div class="l">بطاقة مراجعة</div>
+          </div>
+          <div class="stat-chip green">
+            <div class="n" id="stat-known">0%</div>
+            <div class="l">بطاقات عارفها</div>
+          </div>
+        </div>
+
+        <div class="section-label">
+          <span>اختار الأقسام للبدء</span>
+          <button class="sel-all" id="btn-select-all">اختار الكل</button>
+        </div>
+
+        <div class="missed-bin" id="missed-bin">
+          <div><b>⭐ البطاقات اللي مش عارفها</b><span id="missed-count"></span></div>
+          <button class="pill-btn" id="btn-review-missed">مراجعة سريعة</button>
+        </div>
+
+        <div class="topic-list" id="topic-list"></div>
+
+        <div class="legend"><b>مصادر الأسئلة:</b> كل سؤال مكتوب عليه مصدره —
+          <span class="srctag">البنك المشترك</span> نسخة موحدة من بنوك المنصورة وطنطا وبنك 2024 وبنك طه حسني (المحلولة) وبنك بنها والزقازيق •
+          <span class="srctag">بنك السس</span> مراجعة وأسئلة عبدو السس •
+          <span class="srctag">بنك إمبابة</span> •
+          <span class="srctag">امتحانات الدور الثاني</span> امتحانات السنوات السابقة •
+          <span class="srctag">مراجعة السنة الثانية</span> المراجعة المكتوبة (200 سؤال) •
+          <span class="srctag">امتحان 2019</span> امتحان الدور الأول 2019 •
+          <span class="srctag">أسئلة Module IV — نسا 4</span> مجموعة أسئلة المديول الرابع •
+          <span class="srctag special">Special O.Nursing Questions</span>
+        </div>
+
+        <div class="levels" id="levels">
+          <button class="lvl on" data-lvl="all">الكل (36)</button>
+          <button class="lvl" data-lvl="easy">سهل (21)</button>
+          <button class="lvl" data-lvl="med">متوسط (15)</button>
+          <button class="lvl" data-lvl="hard">صعب (0)</button>
+        </div>
+
+        <p style="margin-top:12px; font-size:14.5px; line-height:1.9;">أسئلة شاملة كل أفكار الموديول الرابع: النفاس والارتداد الرحمي، النفاس (lochia)، الرضاعة، النزيف بعد الولادة الأولي والثانوي، وتسمم النفاس — مع <b>تلميح</b> لكل سؤال وشرح بعد الإجابة. تحت الاختبار هتلاقي <b>بطاقات المراجعة</b> (تعريفات وقوائم) و<b>أسئلة Special O.Nursing Questions</b>.</p>
+        <div class="small" id="home-stats"></div>
+        <button class="btn ghost hidden" id="btn-resume">كمّل من حيث توقفت</button>
+
+        <footer>O.Nursing • Dr: Abdullah Shawky<br>الأسئلة من محتوى المحاضرة وأسئلة امتحانات دبلوم المعاهد الفنية الصحية<br><b>الأسئلة خاصة بـ O.Nursing — ممنوع النسخ والنقل</b></footer>
+        <div style="height:260px"></div>
+      </div>
+    </div>
+
+    <div class="floating-bar">
+      <div class="wrap floating-bar-inner">
+        <span class="sel-count" id="sel-count">4 أقسام محددة</span>
+        <button class="btn-primary" id="btn-start">
+          ابدأ
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== SETTINGS =============== -->
+  <section id="screen-settings" class="screen">
+    <div class="wrap">
+      <div class="topbar">
+        <button class="pill-btn" id="btn-back-home">‹ رجوع للرئيسية</button>
+      </div>
+
+      <div class="hero" style="padding-top:6px;">
+        <h1 style="font-size:21px;">قبل ما تبدأ</h1>
+        <p id="settings-subtitle">ظبط إعدادات جلسة المذاكرة</p>
+      </div>
+
+      <div class="settings-card">
+        <div class="progress-summary">
+          <div class="ring-big">
+            <svg viewBox="0 0 56 56">
+              <circle class="bg-ring" cx="28" cy="28" r="24"/>
+              <circle class="fg-ring" id="settings-ring" cx="28" cy="28" r="24"/>
+            </svg>
+            <div class="pct" id="settings-pct">0%</div>
+          </div>
+          <div class="progress-text">
+            <b id="settings-progress-txt">0 من 0 بطاقة معروفة</b>
+            <span id="settings-progress-sub">التقدم المحفوظ لهذا الاختيار</span>
+          </div>
+          <button class="clear-progress" id="btn-clear-selection-progress">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0l-1 14a2 2 0 01-2 2H7a2 2 0 01-2-2L4 6"/></svg>
+            امسح التقدم
+          </button>
+        </div>
+      </div>
+
+      <div class="settings-card">
+        <h3><span class="num">1</span> ابدأ بـ</h3>
+        <div class="opt-grid">
+          <div class="opt-btn active" data-group="scope" data-val="all">كل البطاقات</div>
+          <div class="opt-btn" data-group="scope" data-val="unknown">اللي مش عارفها بس</div>
+        </div>
+        <div class="queue-note" id="queue-note"></div>
+      </div>
+
+      <div class="settings-card">
+        <h3><span class="num">2</span> ترتيب البطاقات</h3>
+        <div class="opt-grid">
+          <div class="opt-btn active" data-group="shuffle" data-val="off">بالترتيب</div>
+          <div class="opt-btn" data-group="shuffle" data-val="on">عشوائي 🔀</div>
+        </div>
+      </div>
+
+      <div class="settings-card">
+        <h3><span class="num">3</span> إعادة عرض البطاقة الغلط</h3>
+        <div class="opt-grid">
+          <div class="opt-btn active" data-group="requeue" data-val="none">من غير إعادة</div>
+          <div class="opt-btn" data-group="requeue" data-val="time">بعد مدة معينة</div>
+          <div class="opt-btn" data-group="requeue" data-val="end" style="grid-column:1/3;">بعد ما البطاقات تخلص</div>
+        </div>
+        <div class="time-row disabled" id="requeue-time-row">
+          <div class="time-chip" data-mins="1">1 دقيقة</div>
+          <div class="time-chip active" data-mins="3">3 دقايق</div>
+          <div class="time-chip" data-mins="5">5 دقايق</div>
+          <div class="time-chip" data-mins="10">10 دقايق</div>
+        </div>
+      </div>
+
+      <div style="height:100px;"></div>
+    </div>
+
+    <div class="floating-bar">
+      <div class="wrap">
+        <button class="btn-primary" id="btn-start-study" style="width:100%;">
+          ابدأ المذاكرة 🩺
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== STUDY (flashcards) =============== -->
+  <section id="screen-study" class="screen">
+    <div class="wrap" style="flex:1; display:flex; flex-direction:column;">
+      <div class="study-header">
+        <div class="exit-btn" id="btn-exit-study">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </div>
+        <div class="qbar-track"><div class="qbar-fill" id="qbar-fill"></div></div>
+        <div class="qcounter" id="qcounter">1 / 1</div>
+      </div>
+
+      <div class="card-meta">
+        <span class="card-sec" id="card-sec">SECTION</span>
+        <span class="ext-star hidden" id="card-ext">★ تكملة من خارج الملف</span>
+        <span class="review-badge hidden" id="card-review">🔁 مراجعة</span>
+        <span class="known-badge hidden" id="card-known">✓ عارفها</span>
+      </div>
+
+      <div class="flashcard" id="flashcard">
+        <div class="fc-inner">
+          <div class="fc-face fc-front">
+            <div class="qnum" id="fc-qnum">Q1</div>
+            <div class="qtitle" id="fc-qtitle">Question</div>
+            <div class="fc-src" id="fc-src"></div>
+            <div class="tap-hint">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v6h6M20 20v-6h-6"/><path d="M4 10a8 8 0 0114-5M20 14a8 8 0 01-14 5"/></svg>
+              دوس على الكارت عشان تشوف الإجابة
+            </div>
+          </div>
+          <div class="fc-face fc-back" id="fc-answer"></div>
+        </div>
+      </div>
+
+      <div class="mark-row hidden" id="mark-row">
+        <button class="mark-btn dunno" id="btn-dunno">✗ لسه مش عارفها</button>
+        <button class="mark-btn know" id="btn-know">✓ عارفها</button>
+      </div>
+
+      <div class="study-nav">
+        <button class="nav-btn" id="btn-prev">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+          اللي قبله
+        </button>
+        <button class="nav-btn" id="btn-shuffle" title="خلط البطاقات المتبقية">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+          خلط
+        </button>
+        <button class="nav-btn" id="btn-next-card">
+          اللي بعده
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== SUMMARY (flashcards) =============== -->
+  <section id="screen-summary" class="screen">
+    <div class="wrap">
+      <div class="topbar">
+        <button class="pill-btn" id="btn-summary-exit">‹ خروج</button>
+      </div>
+
+      <div class="results-hero">
+        <div class="results-ring">
+          <svg viewBox="0 0 150 150">
+            <circle class="bg-ring" cx="75" cy="75" r="65"/>
+            <circle class="fg-ring" id="results-ring" cx="75" cy="75" r="65"/>
+          </svg>
+          <div class="pct-big">
+            <b id="results-pct">0%</b>
+            <span>نسبة البطاقات اللي عارفها</span>
+          </div>
+        </div>
+        <h2 id="results-title">خلصت الجلسة 🎉</h2>
+        <p id="results-sub">راجع البطاقات اللي لسه مش عارفها تحت</p>
+      </div>
+
+      <div class="results-stats">
+        <div class="rstat known">
+          <div class="n" id="results-known">0</div>
+          <div class="l">عارفها</div>
+        </div>
+        <div class="rstat unknown">
+          <div class="n" id="results-unknown">0</div>
+          <div class="l">مش عارفها</div>
+        </div>
+        <div class="rstat">
+          <div class="n" id="results-total">0</div>
+          <div class="l">إجمالي</div>
+        </div>
+      </div>
+
+      <div class="results-actions">
+        <button class="nav-btn" id="btn-retry-unknown">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M4 4v6h6M20 20v-6h-6"/><path d="M4 10a8 8 0 0114-5M20 14a8 8 0 01-14 5"/></svg>
+          ذاكر اللي مش عارفها
+        </button>
+        <button class="nav-btn" id="btn-go-home-2">🏠 الرئيسية</button>
+      </div>
+
+      <div class="review-section">
+        <h3>البطاقات اللي لسه مش عارفها — دوس عشان تشوف الإجابة</h3>
+        <div id="review-list"></div>
+      </div>
+
+      <div class="footer-credit">O.Nursing • Dr. Abdullah Shawky</div>
+    </div>
+  </section>
+
+  <!-- =============== QUIZ (scored MCQ + True/False, same flip-card design) =============== -->
+  <section id="quiz" class="screen">
+    <div class="wrap" style="flex:1; display:flex; flex-direction:column;">
+      <div class="study-header">
+        <div class="exit-btn" id="btn-quiz-exit">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </div>
+        <div class="qbar-track"><div class="qbar-fill" id="prog-fill"></div></div>
+        <div class="qcounter" id="q-count">1 / 36</div>
+      </div>
+
+      <div class="card-meta">
+        <span class="card-sec" id="quiz-sec">MCQ</span>
+        <span id="q-badge"></span>
+        <span class="qcounter" id="q-score">صح: 0 / 0</span>
+      </div>
+
+      <div class="flashcard quiz-card" id="quiz-card">
+        <div class="fc-inner" id="quiz-inner">
+          <div class="fc-face fc-front quiz-front">
+            <div class="qnum" id="quiz-qnum">M4</div>
+            <div class="q" id="q-stem"></div>
+            <div class="qsrc" id="q-src"></div>
+            <div id="q-body"></div>
+            <button class="hintbtn" id="btn-hint">💡 تلميح</button>
+            <div class="hint" id="q-hint"></div>
+            <div class="tap-hint">اختار إجابة — وبعدها الكارت هيتقلب ويظهر الشرح</div>
+          </div>
+          <div class="fc-face fc-back quiz-back">
+            <div class="ans-box">
+              <div class="ans-label">الشرح</div>
+              <div class="explain" id="q-explain"></div>
+              <div class="model" id="q-model"></div>
+            </div>
+            <div class="tap-hint">اضغط على الكارت للرجوع للسؤال</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="study-nav">
+        <button class="nav-btn hidden" id="btn-next">السؤال التالي ←</button>
+        <button class="nav-btn hidden" id="btn-finish">عرض النتيجة</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== RESULTS (scored) =============== -->
+  <section id="results" class="screen">
+    <div class="wrap">
+      <div class="topbar">
+        <button class="pill-btn" id="btn-home">‹ رجوع للموديول الرابع</button>
+      </div>
+
+      <div class="results-hero">
+        <div class="results-ring">
+          <svg viewBox="0 0 150 150">
+            <circle class="bg-ring" cx="75" cy="75" r="65"/>
+            <circle class="fg-ring" id="ring-fg" cx="75" cy="75" r="65" stroke-dasharray="408" stroke-dashoffset="408"/>
+          </svg>
+          <div class="pct-big">
+            <b id="res-pct">0%</b>
+            <span>النتيجة</span>
+          </div>
+        </div>
+        <h2>النتيجة</h2>
+        <div class="res-line" id="res-line"></div>
+      </div>
+
+      <table class="res" id="res-table"></table>
+
+      <div class="results-actions" style="margin-top:16px;">
+        <button class="nav-btn" id="btn-retry">إعادة الأسئلة</button>
+      </div>
+
+      <div class="footer-credit">O.Nursing • Dr. Abdullah Shawky</div>
+    </div>
+  </section>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<svg width="0" height="0" style="position:absolute;">
+  <defs>
+    <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1B3A5C"/>
+      <stop offset="100%" stop-color="#5B8DB8"/>
+    </linearGradient>
+    <linearGradient id="ringGradBig" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1B3A5C"/>
+      <stop offset="100%" stop-color="#5B8DB8"/>
+    </linearGradient>
+  </defs>
+</svg>
+<div id="print-note">الأسئلة خاصة بـ O.Nursing — ممنوع النسخ والنقل</div>
+
+<script>
+const QUESTIONS = [
+ {
+  "id": "M7",
+  "level": "med",
+  "type": "mcq",
+  "q": "Local causes of atonic uterus include:",
+  "options": [
+   "Anemia",
+   "Full bladder",
+   "Uterine fibroid"
+  ],
+  "correct": 2,
+  "hint": "Which one is a local uterine cause — not a general or nervous cause?",
+  "explain": "Anemia is a general cause and a full bladder is a nervous cause; <b>uterine fibroid</b> is a local cause of atonic uterus.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "M10",
+  "level": "easy",
+  "type": "mcq",
+  "q": "What types of trauma during labor and birth would lead to PPH risk?",
+  "options": [
+   "Instrumental assisted birth (vacuum or forceps)",
+   "C-Section",
+   "Lacerations of the cervix or vaginal wall",
+   "All of the above"
+  ],
+  "correct": 3,
+  "hint": "All three are trauma causes.",
+  "explain": "Instrumental birth, cesarean section and lacerations of the cervix or vaginal wall are all trauma during labor and birth that lead to PPH risk — so <b>all of the above</b>.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "M12",
+  "level": "med",
+  "type": "mcq",
+  "q": "General risk factors of puerperal sepsis except:",
+  "options": [
+   "Anemia",
+   "Prolonged labor",
+   "Obesity",
+   "Immunosuppression"
+  ],
+  "correct": 1,
+  "hint": "Which one belongs to the labor-management group, not the general group?",
+  "explain": "<b>Prolonged labor</b> is a labor-management predisposing factor, not a general risk factor — the general factors are anemia, poor nutrition, lack of prenatal care, obesity, low socioeconomic status, sexual intercourse after rupture of membranes and immunosuppression. Key by derivation from the book.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "M13",
+  "level": "easy",
+  "type": "mcq",
+  "q": "Causes of secondary postpartum hemorrhage except:",
+  "options": [
+   "Infection",
+   "Inversion",
+   "Prolonged labor",
+   "Subinvolution"
+  ],
+  "correct": 2,
+  "hint": "Prolonged labor causes atony, not secondary bleeding.",
+  "explain": "The book's secondary-PPH causes are retained products, infection, subinvolution, choriocarcinoma, inversion, local lesions and hemorrhagic blood diseases — <b>prolonged labor</b> is not among them.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "M14",
+  "level": "med",
+  "type": "mcq",
+  "q": "Operative-delivery risk factors of puerperal sepsis except:",
+  "options": [
+   "Laceration",
+   "Forceps",
+   "Prolonged labor",
+   "Cesarean section"
+  ],
+  "correct": 2,
+  "hint": "Which one belongs to the labor-management group?",
+  "explain": "<b>Prolonged labor</b> is a labor-management factor; the operative-delivery factors are cesarean delivery, general anesthesia, urgency of operation, breaks in operative technique, manual placental removal, forceps delivery, episiotomy and lacerations.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "M15",
+  "level": "easy",
+  "type": "mcq",
+  "q": "General causes of atonic uterus:",
+  "options": [
+   "Laceration",
+   "Prolonged labor",
+   "Forceps delivery",
+   "Uterine fibroid"
+  ],
+  "correct": 1,
+  "hint": "Which one exhausts the uterine muscles?",
+  "explain": "<b>Prolonged labor</b> is a general cause of atonic uterus — the uterine muscles become exhausted during the 1st and 2nd stages and lose contractility. Laceration is trauma, forceps is operative, fibroid is local.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "M19",
+  "level": "med",
+  "type": "mcq",
+  "q": "Operative-delivery risk factors of puerperal sepsis except (variant):",
+  "options": [
+   "Manual placental removal",
+   "Cesarean delivery",
+   "Forceps delivery",
+   "Retained placental fragment"
+  ],
+  "correct": 3,
+  "hint": "Which one belongs to the labor-management group?",
+  "explain": "A <b>retained placental fragment</b> is a labor-management predisposing factor, not an operative-delivery factor. Key by derivation from the book.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "M20",
+  "level": "med",
+  "type": "mcq",
+  "q": "Predisposing factors for postpartum infections include:",
+  "options": [
+   "Retained placental fragment",
+   "Poor nutrition",
+   "Lacerations",
+   "All the above"
+  ],
+  "correct": 3,
+  "hint": "One from each group — general, labor-management and operative.",
+  "explain": "Poor nutrition is a general factor, a retained placental fragment is a labor-management factor and lacerations are an operative-delivery factor — so <b>all of the above</b>.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "M22",
+  "level": "med",
+  "type": "mcq",
+  "q": "Advantage of breastfeeding for mother except:",
+  "options": [
+   "Cost effective",
+   "Less incidence of breast cancer",
+   "Immunological properties help prevent infection",
+   "Natural contraception"
+  ],
+  "correct": 2,
+  "hint": "Which advantage belongs to the baby?",
+  "explain": "<b>Immunological properties help prevent infection</b> is an advantage of breastfeeding for the baby, not the mother. Key by derivation from the book.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "M28",
+  "level": "easy",
+  "type": "mcq",
+  "q": "General risk factors of puerperal sepsis include:",
+  "options": [
+   "Prolonged labor",
+   "Anaemia, poor nutrition, obesity",
+   "Laceration",
+   "Prolonged rupture of membrane"
+  ],
+  "correct": 1,
+  "hint": "Pick the group of general factors.",
+  "explain": "<b>Anaemia, poor nutrition and obesity</b> are all general risk factors. Prolonged labor and prolonged rupture of membranes are labor-management factors; laceration is an operative-delivery factor.",
+  "src": "بنك السس"
+ },
+ {
+  "id": "M54",
+  "level": "easy",
+  "type": "mcq",
+  "q": "All of the following are causes of primary post-partum hemorrhage (except):",
+  "options": [
+   "Atonic uterus",
+   "Trauma",
+   "Infection",
+   "Hemorrhagic blood diseases"
+  ],
+  "correct": 2,
+  "hint": "Which cause belongs to secondary PPH?",
+  "explain": "<b>Infection</b> is a cause of secondary postpartum hemorrhage, not primary. The primary causes are atonic uterus, trauma and hemorrhagic blood diseases. Key by derivation from the book.",
+  "src": "امتحان 2019"
+ },
+ {
+  "id": "M55",
+  "level": "easy",
+  "type": "mcq",
+  "q": "Immediately following delivery the size of the uterus as a large grapefruit can be palpated:",
+  "options": [
+   "Above the umbilicus",
+   "Between the umbilicus and xiphoid",
+   "Between the symphysis pubis and umbilicus",
+   "Above the symphysis pubis"
+  ],
+  "correct": 2,
+  "hint": "Where does the book place the fundus right after delivery?",
+  "explain": "Right after delivery the uterus, as large as a grapefruit, can be palpated <b>midway between the symphysis pubis and umbilicus</b> (book, p. 79). Key by the book — conflict C-1 noted: the bank's 'just above symphysis pubis' wording is recorded in the notes, not used.",
+  "src": "امتحانات الدور الثاني"
+ },
+ {
+  "id": "T2",
+  "level": "easy",
+  "type": "tf",
+  "q": "Depression in the early postnatal period is due to sudden changes in hormone levels.",
+  "correct": true,
+  "hint": "What changes suddenly after birth?",
+  "explain": "TRUE — depression in the early postnatal period is due to sudden changes in hormone levels.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "T3",
+  "level": "easy",
+  "type": "tf",
+  "q": "Completely involution of the uterus is done immediately after labor.",
+  "correct": false,
+  "hint": "How long does involution take?",
+  "explain": "FALSE — involution takes 6 weeks; the uterus returns to nearly its pre-pregnancy size and condition gradually, by autolysis and ischemia.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "T5",
+  "level": "easy",
+  "type": "tf",
+  "q": "Lochia alba is pinkish yellow discharge containing less blood.",
+  "correct": false,
+  "hint": "Which lochia is pinkish yellow?",
+  "explain": "FALSE — pinkish yellow discharge is lochia serosa. Lochia alba is creamy or white colored, containing leucocytes and mucus.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "T7",
+  "level": "easy",
+  "type": "tf",
+  "q": "Infection may cause secondary postpartum hemorrhage.",
+  "correct": true,
+  "hint": "Is infection among the secondary-PPH causes?",
+  "explain": "TRUE — infection is one of the book's 7 groups of secondary-PPH causes.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "T8",
+  "level": "easy",
+  "type": "tf",
+  "q": "In a lactating mother, menstruation resumes within 7 to 9 weeks after delivery.",
+  "correct": false,
+  "hint": "7–9 weeks is for whom?",
+  "explain": "FALSE — 7 to 9 weeks is for non-nursing mothers. In lactating mothers menstruation usually reappears not earlier than 3–4 months.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "T12",
+  "level": "easy",
+  "type": "tf",
+  "q": "In the post-partum period, menstruation is generally profuse and prolonged.",
+  "correct": true,
+  "hint": "What is the first period after birth like?",
+  "explain": "TRUE — the first period after birth is generally profuse and prolonged.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "T15",
+  "level": "easy",
+  "type": "tf",
+  "q": "Blood volume loss is about 1000 ml in vaginal delivery but 500 ml in cesarean birth.",
+  "correct": false,
+  "hint": "Which way round are the figures?",
+  "explain": "FALSE — blood loss is 300–500 ml in normal vaginal delivery and 500–1000 ml in cesarean birth. The statement swaps the two.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "T17",
+  "level": "easy",
+  "type": "tf",
+  "q": "Losing 100 ml of blood during the first 24 hours of delivery is called postpartum hemorrhage.",
+  "correct": false,
+  "hint": "How much blood loss defines PPH?",
+  "explain": "FALSE — postpartum hemorrhage is a loss of more than 500 ml in the first 24 hours. Losing 100 ml is not PPH.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "T20",
+  "level": "med",
+  "type": "tf",
+  "q": "During postpartum, endometrial regeneration is completed by 1st week.",
+  "correct": false,
+  "hint": "How many weeks does the book give?",
+  "explain": "FALSE — endometrial regeneration is completed by about 3 weeks, except the placental site, where it is not complete until 6 weeks. Key by derivation from the book.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "T21",
+  "level": "med",
+  "type": "tf",
+  "q": "During postpartum, vaginal rugae reappears in the third week.",
+  "correct": true,
+  "hint": "When do the rugae come back?",
+  "explain": "TRUE — the vaginal rugae reappear in the third week. Key by derivation from the book.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "T22",
+  "level": "med",
+  "type": "tf",
+  "q": "In lactating mothers, menstruation usually reappears not earlier than 3–4 months.",
+  "correct": true,
+  "hint": "What does the book say for lactating mothers?",
+  "explain": "TRUE — in lactating mothers menstruation usually reappears not earlier than 3–4 months. Key by derivation from the book (the printed '1-1 months' is garbled).",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "T23",
+  "level": "med",
+  "type": "tf",
+  "q": "Early postpartum period means the first 24 hours after delivery.",
+  "correct": true,
+  "hint": "What is the immediate postpartum period?",
+  "explain": "TRUE — the immediate (early) postpartum period is the first 24 hours after delivery. Key by derivation from the book (the printed '11 hours' is garbled).",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "T24",
+  "level": "med",
+  "type": "tf",
+  "q": "Immediately following delivery, the size of uterus is as large as grapefruit and can be palpated at the symphysis pubis.",
+  "correct": false,
+  "hint": "Where exactly — at the symphysis pubis, or midway?",
+  "explain": "FALSE — immediately after delivery the uterus can be palpated midway between the symphysis pubis and umbilicus, not at the symphysis pubis. Key by derivation from the book.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "T27",
+  "level": "med",
+  "type": "tf",
+  "q": "During the first 8 hrs after labor, the mother is allowed to sleep in any comfortable position.",
+  "correct": true,
+  "hint": "What position is allowed in the first 8 hours?",
+  "explain": "TRUE — during the first 8 hours after labor the mother may sleep in any comfortable position; after that, prone or lateral positions are encouraged. Key by derivation from the book.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "T32",
+  "level": "easy",
+  "type": "tf",
+  "q": "Lochia alba is a red creamy vaginal discharge at the end of puerperium.",
+  "correct": false,
+  "hint": "What color is lochia alba?",
+  "explain": "FALSE — lochia alba is creamy or white colored. Red discharge is lochia rubra.",
+  "src": "بنك السس"
+ },
+ {
+  "id": "T35",
+  "level": "easy",
+  "type": "tf",
+  "q": "A daily requirement for the women in the puerperium is 3000–3500 cal/day.",
+  "correct": true,
+  "hint": "What daily calories does the book give?",
+  "explain": "TRUE — the book gives a daily requirement of 3000–3500 cal/day in the puerperium. Key by derivation from the book.",
+  "src": "بنك إمبابة"
+ },
+ {
+  "id": "T36",
+  "level": "easy",
+  "type": "tf",
+  "q": "Bradycardia is a normal physiological during the puerperium.",
+  "correct": true,
+  "hint": "What pulse rate does the book call normal?",
+  "explain": "TRUE — the heart rate often decreases to 60–70 beats/min, known as physiological bradycardia for 24–48 hours after labor. Key by derivation from the book.",
+  "src": "بنك إمبابة"
+ },
+ {
+  "id": "T38",
+  "level": "easy",
+  "type": "tf",
+  "q": "Within one hour fundus level above umbilicus.",
+  "correct": true,
+  "hint": "Where is the fundus within an hour?",
+  "explain": "TRUE — within an hour the fundus rises to the level above the umbilicus and should remain there for about 24 hours.",
+  "src": "مراجعة السنة الثانية"
+ },
+ {
+  "id": "T39",
+  "level": "med",
+  "type": "tf",
+  "q": "After 24 h fundus descend 3 cm per day.",
+  "correct": false,
+  "hint": "How many cm per day does the fundus descend?",
+  "explain": "FALSE — after 24 hours the fundus descends by approximately 1 cm per day, not 3 cm.",
+  "src": "مراجعة السنة الثانية"
+ },
+ {
+  "id": "T40",
+  "level": "med",
+  "type": "tf",
+  "q": "By 10 day fundus can be palpated abdominally.",
+  "correct": false,
+  "hint": "Where is the uterus by day 10?",
+  "explain": "FALSE — by the 10th day the uterus is in the pelvic cavity and cannot be palpated abdominally.",
+  "src": "مراجعة السنة الثانية"
+ },
+ {
+  "id": "T41",
+  "level": "med",
+  "type": "tf",
+  "q": "Within week weight of uterus about 60 gm.",
+  "correct": false,
+  "hint": "What does the uterus weigh at 1 week — and at 6 weeks?",
+  "explain": "FALSE — within a week the weight of the uterus decreases to about 500 g; it reaches 60 g at 6 weeks.",
+  "src": "مراجعة السنة الثانية"
+ },
+ {
+  "id": "T42",
+  "level": "easy",
+  "type": "tf",
+  "q": "Within 6 week weight of uterus about 60 gm.",
+  "correct": true,
+  "hint": "What does the uterus weigh at 6 weeks?",
+  "explain": "TRUE — at 6 weeks the uterus weighs 60 g, roughly its pre-pregnancy weight.",
+  "src": "مراجعة السنة الثانية"
+ },
+ {
+  "id": "T46",
+  "level": "easy",
+  "type": "tf",
+  "q": "Mother in post partum need to 2.5–3 liter/d.",
+  "correct": true,
+  "hint": "How much fluid per day?",
+  "explain": "TRUE — the daily fluid intake should be 2.5–3 liters.",
+  "src": "مراجعة السنة الثانية"
+ },
+ {
+  "id": "T47",
+  "level": "easy",
+  "type": "tf",
+  "q": "Puerperium first 10 week following delivery.",
+  "correct": false,
+  "hint": "How many weeks is the puerperium?",
+  "explain": "FALSE — the puerperium is the first 6 weeks (40 days) following the birth of an infant.",
+  "src": "مراجعة السنة الثانية"
+ },
+ {
+  "id": "D2",
+  "level": "easy",
+  "type": "written",
+  "q": "Define: Involution (of uterus).",
+  "model": "It refers to changes that reproductive organs, especially the uterus, undergo after childbirth to return to their nearly pre-pregnancy size and condition.\nIt occurs by two processes: autolysis (self-digestion) and ischemia (decreased blood supply).",
+  "hint": "What returns to what — and by which two processes?",
+  "explain": "Involution is the return of the reproductive organs, especially the uterus, to nearly pre-pregnancy size and condition, by autolysis and ischemia.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "D4",
+  "level": "easy",
+  "type": "written",
+  "q": "Define: Lochia rubra.",
+  "model": "Red in color due to the presence of a fair amount of blood, shreds of the decidua, large amount of chorion, amniotic fluid, lanugo hair, vernix caseosa, and lasts from the 1st postpartum days to the 4th day (and sometimes to 7th day).",
+  "hint": "Red — what is in it, and how long does it last?",
+  "explain": "Lochia rubra is red, contains blood, decidua, chorion, amniotic fluid, lanugo and vernix, and lasts from the 1st to the 4th postpartum day (sometimes to the 7th).",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "D5",
+  "level": "easy",
+  "type": "written",
+  "q": "Define: Lochia serosa.",
+  "model": "Pinkish yellow discharge containing less blood and more serum. It extends for another 3 to 4 days.",
+  "hint": "Pinkish yellow — less blood, more what?",
+  "explain": "Lochia serosa is a pinkish yellow discharge containing less blood and more serum, lasting another 3 to 4 days.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "D6",
+  "level": "easy",
+  "type": "written",
+  "q": "Define: Lochia alba.",
+  "model": "Creamy or white colored discharge containing leucocytes and mucus. It remains from the 10th day postpartum.",
+  "hint": "Creamy or white — what does it contain?",
+  "explain": "Lochia alba is a creamy or white colored discharge containing leucocytes and mucus, remaining from the 10th day postpartum.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "D8",
+  "level": "easy",
+  "type": "written",
+  "q": "Define: Primary postpartum hemorrhage.",
+  "model": "An abnormal loss of more than 500 ml of blood from the genital tract occurring during the first 24 hours after delivery of the fetus.",
+  "hint": "More than how much — and within how many hours?",
+  "explain": "Primary postpartum hemorrhage is an abnormal loss of more than 500 ml of blood from the genital tract in the first 24 hours after delivery.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "D9",
+  "level": "easy",
+  "type": "written",
+  "q": "Define: Secondary postpartum hemorrhage.",
+  "model": "Bleeding which occurs after the first 24 hours of delivery and up to the end of the puerperium.",
+  "hint": "After the first 24 hours — up to when?",
+  "explain": "Secondary postpartum hemorrhage is bleeding after the first 24 hours of delivery up to the end of the puerperium.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "D10",
+  "level": "easy",
+  "type": "written",
+  "q": "Define: Puerperal sepsis.",
+  "model": "An infection of the genital tract that occurs at any time between the onset of rupture of the membranes or labor and the 40 days following delivery or abortion.",
+  "hint": "From the onset of rupture of membranes or labor — up to how many days?",
+  "explain": "Puerperal sepsis is an infection of the genital tract occurring at any time between the onset of rupture of the membranes or labor and the 40 days following delivery or abortion — the book's definition.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "D11",
+  "level": "easy",
+  "type": "written",
+  "q": "Define: Diaphoresis.",
+  "model": "Profuse perspiration — it rids the body of excess fluids through the skin.",
+  "hint": "Profuse what — and what does it get rid of?",
+  "explain": "Diaphoresis is profuse perspiration, one of the two methods by which the body rids itself of excess fluid.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "D12",
+  "level": "med",
+  "type": "written",
+  "q": "Define: Involution rate of uterus.",
+  "model": "Immediately following delivery, the size of the uterus is as large as a grapefruit and can be palpated midway between the symphysis pubis and umbilicus; within an hour, the fundus rises to the level above the umbilicus and should remain at this level for about 24 hours, and the uterus now weighs approximately 1000 gm; after 24 hours, the fundus begins to descend by approximately 1 cm per day, so that by the 10th day it is in the pelvic cavity and cannot be palpated abdominally; within a week, the weight of the uterus decreases to about 500 g; at 6 weeks, the uterus weighs 60 g.",
+  "hint": "Grapefruit at delivery — above the umbilicus within an hour — 1 cm a day — 1000 g, 500 g, 60 g.",
+  "explain": "The full fundus-level + weight sequence from the book (conflict C-4 noted: the bank's False keys for the '3 cm per day' and '60 gm at 1 week' wordings agree with the book, which is why those wordings are False).",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "D13",
+  "level": "easy",
+  "type": "written",
+  "q": "Define: Process of involution (of uterus).",
+  "model": "Autolysis (self-digestion) and ischemia (decreased blood supply).",
+  "hint": "Two processes — self-digestion and decreased blood supply.",
+  "explain": "Involution occurs by two processes: autolysis (self-digestion) and ischemia (decreased blood supply).",
+  "src": "مراجعة السنة الثانية"
+ },
+ {
+  "id": "L1",
+  "level": "med",
+  "type": "written",
+  "q": "List: Signs and symptoms of puerperal sepsis.",
+  "model": "1. Specific: elevation of body temperature to 38.5°C persisting for two consecutive days within the first 6 weeks postpartum.\n2. Abdominal: pelvic and/or suprapubic pain; subinvolution.\n3. Vaginal: foul-smelling colored lochia.\n4. General: malaise, fatigue, tachycardia, abdominal distension, meteorism (reflex paralysis of Auerbach's plexus).",
+  "hint": "Specific temperature — abdominal — vaginal — general.",
+  "explain": "The book's full list (conflict C-20 noted: the bank's shorter versions omit subinvolution and the 'two consecutive days within the first 6 weeks' detail — the book's list is the answer).",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "L2",
+  "level": "easy",
+  "type": "written",
+  "q": "List: Types of lochia.",
+  "model": "1. Lochia rubra.\n2. Lochia serosa.\n3. Lochia alba.",
+  "hint": "Three types — rubra, serosa, alba.",
+  "explain": "Three types of lochia: rubra, serosa and alba (the 4-blank version in the bank is a misprint).",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "L4",
+  "level": "med",
+  "type": "written",
+  "q": "List: General causes of atonic uterus.",
+  "model": "1. Anemia.\n2. Multiparity — reducing uterus contractility.\n3. Prolonged labor — muscles exhausted during 1st and 2nd stages, lose contractility.\n4. Excessive sedation and deep anesthesia — depress the high centers which stimulate uterine contractility.",
+  "hint": "Anemia — multiparity — prolonged labor — sedation.",
+  "explain": "The four general causes of atonic uterus: anemia, multiparity, prolonged labor, and excessive sedation and deep anesthesia.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "L6",
+  "level": "med",
+  "type": "written",
+  "q": "List: Advantages of breastfeeding for the baby.",
+  "model": "1. Immunological properties help prevent infections.\n2. Provides nutritional needs.\n3. Easily digested.\n4. Less sodium and protein than in cow's milk, puts less stress on the newborn's kidneys.\n5. Calcium is better absorbed.\n6. Least allergenic food for the infant.\n7. Promotes development of facial muscles, jaw, and teeth.\n8. Less likely to be overfed, less obesity.\n9. Has natural laxative effects.\n10. Fulfilling psychological needs.",
+  "hint": "Ten advantages — immunity, nutrition, digestion, kidneys, calcium, allergy, face, overfeeding, laxative, psychology.",
+  "explain": "The book's 10 advantages of breastfeeding for the baby.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "L7",
+  "level": "med",
+  "type": "written",
+  "q": "List: Advantages of breastfeeding for the mother.",
+  "model": "1. Oxytocin release aids uterine involution.\n2. Strong mother-infant relationship.\n3. Convenient, always available, no preparation.\n4. Cost effective.\n5. Less incidence of cancer breast.\n6. Natural contraception.",
+  "hint": "Six advantages — involution, bonding, convenience, cost, cancer, contraception.",
+  "explain": "The book's 6 advantages of breastfeeding for the mother.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "L8",
+  "level": "med",
+  "type": "written",
+  "q": "List: Danger signs during postpartum period for the baby.",
+  "model": "1. Fever (above 38°C).\n2. Low body temperature (below 35.5°C).\n3. Fast breathing (more than 60 breaths per minute).\n4. Severe diarrhea or constipation, colic.\n5. Repeated vomiting, especially projectile vomiting.\n6. Bleeding or offensive odor from the site of the cord.",
+  "hint": "Six signs — fever, low temperature, fast breathing, diarrhea/colic, vomiting, cord.",
+  "explain": "The book's 6 danger signs for the baby during the postpartum period.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "L9",
+  "level": "med",
+  "type": "written",
+  "q": "List: Local causes of atonic uterus.",
+  "model": "1. Over-distension of the uterus by hydramnios, multiple pregnancy and big fetus.\n2. Uterine fibroid.\n3. Incomplete placental separation with retained fragments.\n4. Presence of uterine scar.\n5. Blood clots or piece of membranes.\n6. Rapid or precipitate labor.\n7. Placenta previa.\n8. Abruptio placenta.",
+  "hint": "Eight local causes — over-distension, fibroid, retained fragments, scar, clots, precipitate labor, previa, abruptio.",
+  "explain": "The book's 8 local causes of atonic uterus (conflict C-19 noted: the bank's essay lists the 5 cause groups, not the local causes — the book's 8 items are the answer).",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "L10",
+  "level": "med",
+  "type": "written",
+  "q": "List: Causes of trauma during labour.",
+  "model": "1. Difficult or precipitate labour.\n2. Birth of a large baby.\n3. Instrumental delivery.\n4. Rupture uterus.\n5. Inversion of uterus due to sudden pressure on the uterus or repeated massage with CS.",
+  "hint": "Five causes — difficult/precipitate labour, large baby, instrumental, rupture, inversion.",
+  "explain": "The book's 5 causes of trauma during labour.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "L11",
+  "level": "med",
+  "type": "written",
+  "q": "List: Preventive measures of primary postpartum hemorrhage during intrapartum period.",
+  "model": "1. Proper assessment.\n2. Careful observation for mother and baby.\n3. Avoid misuse of oxytocin.\n4. Avoid bearing down in 1st stage.\n5. Empty bladder every one hour.\n6. Unhurried in delivery of placenta.\n7. Prevention of tear by careful episiotomy — support perineum — maintain flexion.\n8. Assessment for amount of bleeding.\n9. Careful administration of sedatives and analgesic drugs.\n10. Prophylactic administration of oxytocic drugs with delivery of anterior shoulder or at the end of third stage.\n11. Avoid massaging the uterus before separation of the placenta.\n12. Examine the placenta and membranes for completeness.\n13. Examine the utero-vaginal canal for trauma and prompt repair if present.\n14. Effective management of the fourth stage of labor.\n15. No forceps or breech delivery before full dilatation of the cervix.",
+  "hint": "Fifteen measures — assessment, observation, oxytocin, bladder, placenta, episiotomy, bleeding, sedatives, oxytocic, massage, membranes, canal, fourth stage, forceps.",
+  "explain": "The book's 15 preventive measures of primary postpartum hemorrhage during the intrapartum period.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "L13",
+  "level": "med",
+  "type": "written",
+  "q": "List: Nursing management for secondary postpartum hemorrhage.",
+  "model": "1. Call the doctor.\n2. Massage fundus if it is still palpable.\n3. Express any clots.\n4. Encourage mother to empty her bladder.\n5. Give an oxytocin drug as Ergometrine I.V or I.M route.\n6. Keep all pieces and lines to assess volume of blood loss.",
+  "hint": "Six steps — call the doctor, massage, express clots, empty bladder, Ergometrine, keep pieces.",
+  "explain": "The book's 6 nursing-management steps for secondary postpartum hemorrhage.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "L14",
+  "level": "med",
+  "type": "written",
+  "q": "List: Preventive measures of puerperal sepsis during intrapartum period.",
+  "model": "1. Proper assessment on admission.\n2. Close observation for labor progress.\n3. Follow strict asepsis during conduct of labor.\n4. Isolate women with infection.\n5. Minimize vaginal examinations.\n6. Preserve membranes as long as possible.\n7. Unhurried in placental expulsion.\n8. Inspection of placenta and membranes.\n9. Proper inspection of genital tract after delivery for any laceration and repair it promptly.\n10. Replace excess blood loss to improve general body resistance.\n11. Prophylactic antibiotics in premature rupture of membranes.\n12. Prolonged labor and operative delivery (as written in the book).",
+  "hint": "Twelve measures — assessment, observation, asepsis, isolation, few examinations, membranes, placenta, inspection, blood loss, antibiotics.",
+  "explain": "The book's 12 preventive measures of puerperal sepsis during the intrapartum period.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "L15",
+  "level": "med",
+  "type": "written",
+  "q": "List: Nursing intervention of puerperal sepsis.",
+  "model": "1. Assess vital signs every 2–4 hours.\n2. Obtain blood sample for cultures, CBC, blood glucose levels, and send it to the lab.\n3. Collect urine and send it to the laboratory for analysis.\n4. Interpret the result findings.\n5. Evaluate pain and lochia.\n6. Administer IV antibiotics, fluids, and analgesics as prescribed.\n7. Prepare woman for ultrasonography for detection of any intrauterine contents.\n8. Provide routine postpartum care.\n9. Use meticulous hand-washing techniques.\n10. Provide warm baths and compresses or heat lamp.\n11. Provide reassurance and support.\n12. Isolate woman as indicated.",
+  "hint": "Twelve interventions — vitals, blood, urine, findings, pain/lochia, IV drugs, ultrasound, routine care, hand-washing, warmth, reassurance, isolation.",
+  "explain": "The book's 12 nursing interventions for puerperal sepsis.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "L16",
+  "level": "med",
+  "type": "written",
+  "q": "List: Signs and symptoms of secondary postpartum hemorrhage.",
+  "model": "General: tachycardia and low-grade fever.\nAbdominal: subinvolution of uterus.\nVaginal: lochia heavier in amount, fresh in color and offensive in odor; if infection occurs, retained placenta may present.",
+  "hint": "General — abdominal — vaginal.",
+  "explain": "The book's signs and symptoms of secondary postpartum hemorrhage: tachycardia and low-grade fever, subinvolution, and heavier, fresh, offensive lochia.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "L17",
+  "level": "med",
+  "type": "written",
+  "q": "List: Curative measures for primary postpartum hemorrhage.",
+  "model": "1. Uterine massage.\n2. Exploration of uterus under general anesthesia.\n3. Bimanual compression (uterus is firmly squeezed between 2 hands).\n4. Tight intrauterine packing to exert direct pressure on the open uterine sinuses and stimulate uterine contractions.\n5. If all the above measures fail, a hysterectomy is performed.\n6. In traumatic PPH, speculum examination to find out trauma, and homeostasis is achieved by appropriate sutures.",
+  "hint": "Six steps — massage, exploration, bimanual compression, packing, hysterectomy, speculum and sutures.",
+  "explain": "The book's 6 curative measures for primary postpartum hemorrhage.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "L18",
+  "level": "med",
+  "type": "written",
+  "q": "List: General risk factors for developing postpartum infection.",
+  "model": "1. Anemia.\n2. Poor nutrition.\n3. Lack of prenatal care.\n4. Obesity.\n5. Low socioeconomic status.\n6. Sexual intercourse after rupture of membranes.\n7. Immunosuppression.",
+  "hint": "Seven factors — anemia, nutrition, prenatal care, obesity, socioeconomic status, intercourse after ROM, immunosuppression.",
+  "explain": "The book's 7 general risk factors for developing postpartum infection.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "L19",
+  "level": "easy",
+  "type": "written",
+  "q": "List: Importance of exercise during postpartum period.",
+  "model": "1. Promotes circulation.\n2. Lessens the possibility of DVT and restores the muscle tone of the abdominal wall and pelvic floor.\n3. Gives the patient a sense of wellbeing.\nDeep breathing and free movements in the bed are started on the day of delivery.",
+  "hint": "Circulation — DVT and muscle tone — wellbeing.",
+  "explain": "The book's importance of exercise during the postpartum period.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "L20",
+  "level": "med",
+  "type": "written",
+  "q": "List: Nursing care of mother during postpartum period.",
+  "model": "Immediate care: observation and recording (vital signs 2 times daily; palpate the uterus daily — firmness, fundus level, involution rate about 1 cm/day; breasts; perineum; lochia; urine output; legs; emotional state); rest and sleep (8 hrs at night + 2 hrs nap); diet (3000–3500 cal/day, fluids 2.5–3 L); hygiene (daily shower, perineal care, breast care); breastfeeding; positioning (any comfortable position first 8 hrs, then prone/lateral; avoid supine/semi-sitting); ambulation (early, prevents stasis and DVT); bladder and bowel function (void 6–8 hrs, catheterize if no urine after 12 hrs, glycerin suppository); postnatal exercise.\nLate care: health education and counseling (breastfeeding; postnatal exercise, hygiene, rest, sleep and nutrition; care of the baby; family planning; importance of postpartum examination).",
+  "hint": "Immediate care (observation, rest, diet, hygiene, breastfeeding, positioning, ambulation, bladder/bowel, exercise) + late care (health education).",
+  "explain": "The book's nursing care of the mother during the postpartum period: immediate care plus late care (health education and counseling).",
+  "src": "بنك السس"
+ },
+ {
+  "id": "L21",
+  "level": "med",
+  "type": "written",
+  "q": "List: Nursing care of newborn during the postpartum period.",
+  "model": "1. Observing the general condition.\n2. Observe temperature, skin color, newborn rash, jaundice.\n3. Cleanliness, handling, clothing, cord care, feeding, bonding, diapering, circumcision of male infant, immunization, weaning.\n4. Stool and voiding (6 or more voids/day).\n5. Ensure adequate hours of sleep.\n6. Protect from environmental hazards.\n7. Encourage early skin-to-skin contact, bonding and attachment.",
+  "hint": "Seven items — general condition, temperature/skin, cleanliness/cord/feeding, stool/voiding, sleep, protection, skin-to-skin.",
+  "explain": "The book's 7 items of newborn care during the postpartum period.",
+  "src": "بنك السس"
+ },
+ {
+  "id": "L22",
+  "level": "med",
+  "type": "written",
+  "q": "List: Causes (predisposing factors) of puerperal sepsis.",
+  "model": "General (7): anemia; poor nutrition; lack of prenatal care; obesity; low socioeconomic status; sexual intercourse after rupture of membranes; immunosuppression.\nLabor management (9): prolonged labor; prolonged rupture of membranes; chorioamnionitis; intrauterine fetal monitoring; number of examinations during labor; hemorrhage; retained placental fragment; intrauterine manipulation; infection control practice during different stages of labor.\nOperative delivery (7): cesarean delivery; general anesthesia; urgency of operation; breaks in operative technique; manual placental removal; forceps delivery, episiotomy; lacerations.",
+  "hint": "Three groups — general 7, labor management 9, operative delivery 7.",
+  "explain": "The book's 7 + 9 + 7 predisposing-factor groups for puerperal sepsis (conflict C-21 noted: the summary's shorter list omits chorioamnionitis and infection control practice — the book's groups are the answer).",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "L23",
+  "level": "easy",
+  "type": "written",
+  "q": "List: Methods to get rid of excess fluid.",
+  "model": "1. Diuresis — increased excretion of urine.\n2. Diaphoresis — profuse perspiration.",
+  "hint": "Two methods — urine and sweat.",
+  "explain": "The body rids itself of excess fluid by diuresis and diaphoresis.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "L24",
+  "level": "med",
+  "type": "written",
+  "q": "List: Physiological changes for one system during postpartum.",
+  "model": "One system — e.g. the reproductive system: involution of the uterus (autolysis and ischemia); endometrial regeneration completed by about 3 weeks (placental site 6 weeks); lochia — rubra 1st–4th day, serosa another 3–4 days, alba from the 10th day; cervix firm by the end of the first week; vaginal rugae reappear in the third week. Any one system is acceptable (coagulation, vital signs, gastrointestinal, urinary, musculoskeletal or integumentary).",
+  "hint": "Pick one system and give its changes — e.g. the reproductive system.",
+  "explain": "Physiological changes for one system during the postpartum period — the reproductive system is given as the model answer; any one system is acceptable.",
+  "src": "أسئلة Module IV — نسا 4"
+ },
+ {
+  "id": "L25",
+  "level": "med",
+  "type": "written",
+  "q": "List: Immediate care of the mother during postpartum period.",
+  "model": "Observation and recording: vital signs 2 times daily; palpate the uterus daily to assess firmness; the breasts are examined to note their tension (and consistency, signs of infection, milk flow and nipples in breastfeeding mothers); perineum observed for redness, ecchymosis, edema or gapping; lochia checked for color, amount, odor, consistency and blood clots; urine output recorded for the first 24 hours; legs examined for pain and edema; emotional state observed.",
+  "hint": "Observation and recording — vitals, uterus, breasts, perineum, lochia, urine, legs, emotions.",
+  "explain": "The book's immediate care of the mother: observation and recording of vital signs, uterus, breasts, perineum, lochia, urine output, legs and emotional state.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "L26",
+  "level": "med",
+  "type": "written",
+  "q": "List: Late care of the mother / newborn.",
+  "model": "Health education and counseling (5 topics): breastfeeding (definition, technique and position); postnatal exercise, hygiene, rest, sleep and nutrition; care of the baby (hygiene, prevention of infection, feeding, love and security, advantages of rooming in); family planning methods for spacing of pregnancy; importance of postpartum examination and follow-up.\nCare of the newborn (7 items): observing the general condition; temperature, skin color, rash, jaundice; cleanliness, handling, clothing, cord care, feeding, bonding, diapering, circumcision, immunization, weaning; stool and voiding; adequate sleep; protection from environmental hazards; early skin-to-skin contact, bonding and attachment.",
+  "hint": "Late care: 5 health-education topics + 7 newborn-care items.",
+  "explain": "The book's late care of the mother (health education and counseling) and care of the newborn.",
+  "src": "أسئلة Module IV — نسا 4"
+ },
+ {
+  "id": "L27",
+  "level": "med",
+  "type": "written",
+  "q": "List: Nursing management of primary postpartum hemorrhage.",
+  "model": "Preventive measures: antepartum (5) + intrapartum (15).\nCurative measures (6): uterine massage; exploration of uterus under general anesthesia; bimanual compression; tight intrauterine packing; hysterectomy if all measures fail; speculum examination and sutures in traumatic PPH.\nObservation of the mother (7): record pulse and BP every 15 minutes; palpate uterus every 15 minutes; check temperature 4-hourly; examine lochia for amount and consistency; examine IV infusion; intake and output chart; relieve anxiety and give prophylactic antibiotics as prescribed.",
+  "hint": "Prevention (antepartum + intrapartum) + curative measures + observation of the mother.",
+  "explain": "The book's nursing management of primary postpartum hemorrhage: preventive measures, curative measures and observation of the mother.",
+  "src": "أسئلة Module IV — نسا 4"
+ },
+ {
+  "id": "L28",
+  "level": "med",
+  "type": "written",
+  "q": "List: Causes of uterine atony in primary postpartum hemorrhage.",
+  "model": "The 5 groups: 1. General causes.\n2. Local causes.\n3. Nervous causes.\n4. Idiopathic causes.\n5. Hemorrhagic blood diseases.",
+  "hint": "Five groups — general, local, nervous, idiopathic, hemorrhagic.",
+  "explain": "The 5 groups of causes of uterine atony in primary postpartum hemorrhage.",
+  "src": "أسئلة Module IV — نسا 4"
+ },
+ {
+  "id": "L29",
+  "level": "med",
+  "type": "written",
+  "q": "List: Signs and symptoms of abdominal examination in primary post partum hemorrhage from uterine atony / from trauma.",
+  "model": "Atony (concealed bleeding): uterus is boggy — soft, distended, no tone; gradually enlarges; squeezing the fundus leads to a gush of blood.\nTrauma (revealed bleeding): uterus is subinvoluted; hard, firm, well contracted; large.",
+  "hint": "Atony: boggy, soft, distended, no tone. Trauma: hard, firm, well contracted.",
+  "explain": "Abdominal-examination findings in primary PPH: atony gives a boggy, soft, distended uterus; trauma gives a hard, firm, well-contracted uterus.",
+  "src": "أسئلة Module IV — نسا 4"
+ },
+ {
+  "id": "L30",
+  "level": "med",
+  "type": "written",
+  "q": "List: Signs and symptoms of vaginal examination in primary postpartum hemorrhage.",
+  "model": "Trauma: cervical birth canal laceration; bleeding bright red.\nRetained fragments: bleeding dark red.",
+  "hint": "Trauma: bright red. Retained fragments: dark red.",
+  "explain": "Vaginal-examination findings in primary PPH: laceration bleeds bright red; retained fragments bleed dark red.",
+  "src": "البنك المشترك"
+ },
+ {
+  "id": "L31",
+  "level": "med",
+  "type": "written",
+  "q": "List: Preventive measures of primary post-partum hemorrhage during antepartum period.",
+  "model": "1. Complete history should be taken to identify high-risk patients who are likely to develop PPH.\n2. Improvement of health status, specially to raise the hemoglobin level.\n3. Hospital delivery of high-risk patients (e.g. polyhydramnios, multiple pregnancy, grand multiparous, APH and severe anemia).\n4. Routine blood grouping and typing for immediate management during emergency.\n5. Woman who has hemorrhagic blood diseases should give antifibrinolytic factors.",
+  "hint": "Five measures — history, health status, hospital delivery, blood grouping, antifibrinolytic factors.",
+  "explain": "The book's 5 preventive measures of primary postpartum hemorrhage during the antepartum period.",
+  "src": "امتحانات الدور الثاني"
+ }
+];
+const AM_MCQ = [
+ {
+  "id": "Q-T20-2",
+  "q": "What are the most common causes for subinvolution of the uterus?",
+  "options": [
+   "Postpartum hemorrhage and infection",
+   "Multiple gestation and postpartum hemorrhage",
+   "Uterine tetany and overproduction of oxytocin",
+   "Retained placental fragments and infection"
+  ],
+  "correct": 3,
+  "explain": "Subinvolution is the failure of the uterus to return to a nonpregnant state. The most common causes of subinvolution are retained placental fragments and infection. Subinvolution may be caused by an infection and result in hemorrhage. Multiple gestations may cause uterine atony, resulting in postpartum hemorrhaging. Uterine tetany and overproduction of oxytocin do not cause subinvolution.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-T20-4",
+  "q": "A woman gave birth to a healthy infant boy 5 days ago. What type of lochia does the nurse expect to find when evaluating this client?",
+  "options": [
+   "Lochia rubra",
+   "Lochia sangra",
+   "Lochia alba",
+   "Lochia serosa"
+  ],
+  "correct": 3,
+  "explain": "Lochia serosa, which consists of blood, serum, leukocytes, and tissue debris, generally occurs around day 3 or 4 after childbirth. Lochia rubra consists of blood and decidual and trophoblastic debris. The flow generally lasts 3 to 4 days and pales, becoming pink or brown. Lochia sangra is not a real term. Lochia alba occurs in most women after day 10 and can continue up to 6 weeks after childbirth. ⚠ ملاحظة من المحاضرة: مدة النفاس حسب الكتاب — الحمراء من اليوم الأول إلى الرابع (وأحيانًا إلى السابع)، والصفراء 3–4 أيام أخرى، والبيضاء من اليوم العاشر، والإجمالي 3–4 أسابيع.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-PA-M4",
+  "q": "A nurse is assessing a postpartum client for fundal height, location, and consistency. The fundus is noted to be displaced laterally to the right, and there is uterine atony. The nurse should identify which of the following conditions as a cause of the uterine atony?",
+  "options": [
+   "Poor involution",
+   "Urinary retention",
+   "Hemorrhage",
+   "Infection"
+  ],
+  "correct": 1,
+  "explain": "Poor involution is the result of uterine atony and does not cause it. Urinary retention can result in a distention of the bladder. A distended bladder can cause uterine atony and lateral displacement from the midline, usually to the right. Hemorrhage is the result of uterine atony and does not cause it. Infection does not cause uterine displacement or atony and would be characterized by foul-smelling vaginal discharge and elevated temperature.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-P18-11a",
+  "q": "Postbirth uterine/vaginal discharge (called lochia):",
+  "options": [
+   "Is similar to a light menstrual period for the first 6 to 12 hours.",
+   "Is usually greater after cesarean births.",
+   "Will usually decrease with ambulation and breastfeeding.",
+   "Should smell like normal menstrual flow unless an infection is present."
+  ],
+  "correct": 3,
+  "explain": "An offensive odor usually indicates an infection. Lochia flow should approximate a heavy menstrual period for the first 2 hours and then steadily decrease. Less lochia usually is seen after cesarean births. Lochia usually increases with ambulation and breastfeeding.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-DC21-5",
+  "q": "Nurses need to know the basic definitions and incidence data about postpartum hemorrhage (PPH). For instance:",
+  "options": [
+   "PPH is easy to recognize early; after all, the woman is bleeding.",
+   "Traditionally it takes more than 1000 mL of blood after vaginal birth and 2500 mL after cesarean birth to define the condition as PPH.",
+   "If anything, nurses and doctors tend to overestimate the amount of blood loss.",
+   "Traditionally PPH has been classified as early or late with respect to birth."
+  ],
+  "correct": 3,
+  "explain": "Early PPH is also known as primary, or acute, PPH; late PPH is known as secondary PPH. Unfortunately PPH can occur with little warning and often is recognized only after the mother has profound symptoms. Traditionally a 500-mL blood loss after a vaginal birth and a 1000-mL blood loss after a cesarean birth constitute PPH. Medical personnel tend to underestimate blood loss by as much as 50% in their subjective observations. ⚠ ملاحظة من المحاضرة: فقدان الدم عند الولادة حسب الكتاب 300–500 مل للولادة المهبلية و500–1000 مل للقيصرية، وتعريف النزيف هو أكثر من 500 مل خلال أول 24 ساعة.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-DC21-1",
+  "q": "The perinatal nurse is caring for a woman in the immediate postbirth period. Assessment reveals that the woman is experiencing profuse bleeding. The most likely etiology for the bleeding is:",
+  "options": [
+   "Uterine atony",
+   "Uterine inversion",
+   "Vaginal hematoma",
+   "Vaginal laceration"
+  ],
+  "correct": 0,
+  "explain": "Uterine atony is marked hypotonia of the uterus. It is the leading cause of after birth hemorrhage. Uterine inversion may lead to hemorrhage, but it is not the most likely source of this patient's bleeding. Furthermore, if the woman is experiencing a uterine inversion, it would be evidenced by the presence of a large, red, rounded mass protruding from the introitus. A vaginal hematoma may be associated with hemorrhage. However, the most likely clinical finding would be pain, not the presence of profuse bleeding. A vaginal laceration may cause hemorrhage, but it is more likely that profuse bleeding would result from uterine atony. A vaginal laceration should be suspected if vaginal bleeding continues in the presence of a firm, contracted uterine fundus.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-P18-21",
+  "q": "The nurse assesses a postpartum patient several hours after delivery and suspects that the uterus is subinvoluted. What could be a potential etiology for this finding?",
+  "options": [
+   "Estrogen levels",
+   "Progesterone levels",
+   "Impaired platelet aggregation",
+   "Retained placental fragments"
+  ],
+  "correct": 3,
+  "explain": "Retained placental fragments or infection cause subinvolution of the uterus. Therefore the nurse should assess the patient for any placental fragments in the uterus. Estrogen and progesterone stimulate massive growth of the uterus during pregnancy. In the postpartum stage, the hormone levels are reduced, and therefore do not affect involution of the uterus. Platelet aggregation causes uterine muscle contraction, but it does not result in involution of the uterus.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-DC21-2",
+  "q": "A primary nursing responsibility when caring for a woman experiencing an obstetric hemorrhage associated with uterine atony is to:",
+  "options": [
+   "Establish venous access",
+   "Perform fundal massage",
+   "Prepare the woman for surgical intervention",
+   "Catheterize the bladder"
+  ],
+  "correct": 1,
+  "explain": "The initial management of excessive after birth bleeding is firm massage of the uterine fundus. Although establishing venous access may be a necessary intervention, the initial intervention would be fundal massage. The woman may need surgical intervention to treat her after birth hemorrhage, but the initial nursing intervention would be to assess the uterus. After uterine massage the nurse may want to catheterize the patient to eliminate any bladder distention that may be preventing the uterus from contracting properly.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-EL-18",
+  "q": "You are on the job. Situation: Tatiana Bennett (O'Meara Case 2) is readmitted to the ED two weeks postpartum with heavy, soaking vaginal bleeding and a larger-than-expected, soft uterus. She is diagnosed with a later postpartum hemorrhage. What is the most likely etiology of this delayed crisis?",
+  "options": [
+   "An undiagnosed, acute cervical laceration.",
+   "Retained placental fragments causing uterine subinvolution.",
+   "Undiagnosed coagulopathy (e.g., von Willebrand disease).",
+   "Spontaneous uterine rupture."
+  ],
+  "correct": 1,
+  "explain": "Late PPH (occurring 24 hours to 12 weeks postpartum) is classically driven by retained placental fragments. The necrotic tissue acts as a physical wedge, preventing the myometrium from fully clamping down on the vascular bed, resulting in subinvolution and delayed, sudden hemorrhage. Options A and D present immediately at birth with bright red bleeding and profound pain, not two weeks later. Option C is rare and typically presents with a lifelong history of bleeding, not isolated delayed PPH. ⚠ ملاحظة من المحاضرة: النزيف المتأخر حسب الكتاب هو النزيف بعد أول 24 ساعة حتى نهاية فترة النفاس.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-DC21-7",
+  "q": "A steady trickle of bright red blood from the vagina in the presence of a firm fundus suggests:",
+  "options": [
+   "Uterine atony",
+   "Lacerations of the genital tract",
+   "Perineal hematoma",
+   "Infection of the uterus"
+  ],
+  "correct": 1,
+  "explain": "Undetected lacerations will bleed slowly and continuously. Bleeding from lacerations is uncontrolled by uterine contraction. The fundus is not firm in the presence of uterine atony. A hematoma would develop internally. Swelling and discoloration would be noticeable; however, bright bleeding would not be. With an infection of the uterus there would be an odor to the lochia and systemic symptoms such as fever and malaise.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-EL-10",
+  "q": "In the immediate postpartum period, a nurse notes a boggy, displaced fundus and a saturated peripad. What is the absolute first physical intervention?",
+  "options": [
+   "Administer methylergonovine (Methergine) IM.",
+   "Massage the fundus aggressively until it is firm.",
+   "Assess for a distended bladder using a bladder scanner.",
+   "Insert a second large-bore IV for fluid resuscitation."
+  ],
+  "correct": 1,
+  "explain": "Uterine atony is the leading cause of postpartum hemorrhage (PPH). Direct mechanical massage rapidly stimulates the myometrium to contract, clamping down on the bleeding spiral arteries of the placental bed. You do not leave the fundus to start an IV or draw medications; you massage the uterus and shout for the rapid response team to bring the hemorrhage cart. Pharmacotherapy takes minutes to act; Foley catheterization and IV insertion take time. Mechanical stimulation is immediate.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-DC21-11",
+  "q": "One of the first symptoms of puerperal infection to assess for in the after birth woman is:",
+  "options": [
+   "Fatigue continuing for longer than 1 week",
+   "Pain with voiding",
+   "Profuse vaginal bleeding with ambulation",
+   "Temperature of 38° C (100.4° F) or higher on two successive days starting 24 hours after birth"
+  ],
+  "correct": 3,
+  "explain": "After birth or puerperal infection is any clinical infection of the genital canal that occurs within 28 days after miscarriage, induced abortion, or childbirth. The definition used in the United States continues to be the presence of a fever of 38° C (100.4° F) or higher on two successive days of the first 10 after birth days, starting 24 hours after birth. Fatigue would be a late finding associated with infection. Pain with voiding may indicate a urinary tract infection, but it is not typically one of the earlier symptoms of infection. Profuse lochia may be associated with endometritis, but it is not the first symptom associated with infection. ⚠ ملاحظة من المحاضرة: عدوى النفاس حسب الكتاب تحدث في أي وقت من بداية تمزق الأغشية أو المخاض حتى 40 يومًا بعد الولادة أو الإجهاض.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-RC-13",
+  "q": "Samantha read in the discharge booklet that postpartum patients are at risk for thrombophlebitis, and she asks you how she can prevent this from happening. You instruct her to:",
+  "options": [
+   "Remain on strict bedrest",
+   "Ambulate frequently",
+   "Cross her legs while sitting",
+   "Avoid elevating her legs"
+  ],
+  "correct": 1,
+  "explain": "Ambulation prevents venous stasis, so the correct instruction is to ambulate frequently — not strict bed rest, crossing the legs, or avoiding leg elevation.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-DC21-12",
+  "q": "The most effective and least expensive treatment of puerperal infection is prevention. What is the most important strategy for the nurse to adopt?",
+  "options": [
+   "Large doses of vitamin C during pregnancy",
+   "Prophylactic antibiotics",
+   "Strict aseptic technique by all health care personnel",
+   "Limited protein and fat intake"
+  ],
+  "correct": 2,
+  "explain": "Strict adherence by all health care personnel to aseptic techniques during childbirth and the postpartum period is extremely important and the least expensive measure to prevent infection. Good nutrition to control anemia is a preventive measure. Increased iron intake assists in preventing anemia. Antibiotics may be administered to manage infections; they are not a cost-effective measure to prevent postpartum infection. Limiting protein and fat intake does not help prevent anemia or prevent infection.",
+  "src": "Special O.Nursing Questions"
+ }
+];
+const AM_QA = [
+ {
+  "id": "Q-K20-17",
+  "q": "What is normal lochia during the first 2 hours postpartum?",
+  "a": "Amount approximately heavy menstrual period. Should not soak a pad in less than 1 hour. After 2 hours, flow should steadily decrease.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-K20-35",
+  "q": "How do episiotomies and lacerations heal?",
+  "a": "Heal like any surgical incision. Watch for REEDA signs (redness, edema, ecchymosis, discharge, approximation). Initial healing: 2–3 weeks; complete healing: 4–6 months.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-K20-7",
+  "q": "What is subinvolution and what causes it?",
+  "a": "Failure of uterus to return to normal size. Caused by ineffective uterine contractions. Most common causes: retained placenta fragments and infection.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-K20-2",
+  "q": "What is involution?",
+  "a": "Process of the uterus returning to nonpregnant size. Starts immediately after placenta is delivered. Caused by uterine muscle contractions.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-K20-73",
+  "q": "Why is bladder distention dangerous postpartum?",
+  "a": "Pushes uterus up and to the side. Prevents firm contraction, increasing risk of hemorrhage. Can lead to UTI and delayed bladder recovery.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-K20-18",
+  "q": "Describe lochia rubra.",
+  "a": "Bright red, may contain small clots. Days 1–3 postpartum. Contains blood, placental site debris, vernix, lanugo, meconium.\n⚠ ملاحظة من المحاضرة: مدة النفاس حسب الكتاب — الحمراء من اليوم الأول إلى الرابع (وأحيانًا إلى السابع)، والصفراء 3–4 أيام أخرى، والبيضاء من اليوم العاشر، والإجمالي 3–4 أسابيع.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-PA-2",
+  "q": "How long is the postpartum period, also known as the puerperium?",
+  "a": "Around 6 weeks.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-N6-17",
+  "q": "What are the indicators of progression of uterine involution?",
+  "a": "Fundal height and lochia.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-K20-20",
+  "q": "Describe lochia alba.",
+  "a": "Whitish-yellow or creamy. Begins around day 10–14. Contains mostly WBCs and tissue debris. May last up to 3–6 weeks.\n⚠ ملاحظة من المحاضرة: مدة النفاس حسب الكتاب — الحمراء من اليوم الأول إلى الرابع (وأحيانًا إلى السابع)، والصفراء 3–4 أيام أخرى، والبيضاء من اليوم العاشر، والإجمالي 3–4 أسابيع.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-N6-29",
+  "q": "Abnormal uterus (fundus) findings after birth.",
+  "a": "Soft, boggy, higher than expected level: uterine atony. Lateral deviation: distended bladder.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-K20-43",
+  "q": "When is postpartum fever concerning?",
+  "a": "38°C (100.4°F) or higher after first 24 hrs. Persists or recurs for 2 days. Possible causes: endometritis, mastitis, UTI, sepsis.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-K20-8",
+  "q": "How is postpartum hemostasis achieved?",
+  "a": "By uterine muscle contraction compressing blood vessels. Called the \"living ligatures\" effect. Not mainly from platelets or clot formation.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-PA-7",
+  "q": "Postpartum physical assessment should include assessing the client's BUBBLE. What does it stand for?",
+  "a": "B: Breasts. U: Uterus (fundal height, uterine placement, and consistency). B: Bowel and GI function. B: Bladder function. L: Lochia (color, odor, consistency, and amount [COCA]). E: Episiotomy (edema, ecchymosis, approximation).",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-PA-25",
+  "q": "A distended bladder as a result of urinary retention can cause what?",
+  "a": "Uterine atony and displacement to one side, usually to the right. The ability of the uterus to contract is also lessened. Have the woman void!",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-PP-28",
+  "q": "A new mother is discharged 16 hours after a vaginal birth. After reviewing the client's discharge instructions, the nurse determines that the teaching was successful when the client states that she will contact her health care provider if she develops which symptom?",
+  "a": "Increased flow of bright red lochia.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-P2A-25",
+  "q": "The nurse's assessment of a postpartum woman who delivered vaginally reveals the fundus displaced to the left of the umbilicus. The nurse's best action is:",
+  "a": "Encourage the client to empty her bladder.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-PP-17",
+  "q": "The nurse receives a report on a client who delivered a healthy neonate 1 hour ago. What should the nurse monitor during the immediate postpartum period of this client?",
+  "a": "Height of fundus.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-PP-30",
+  "q": "A client who gave birth vaginally 16 hours ago states she doesn't need to void at this time. The nurse reviews the documentation and finds that the client hasn't voided for 7 hours. Which response by the nurse is indicated?",
+  "a": "\"It's common for you to have a full bladder even though you can't sense it.\"",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-N6-41",
+  "q": "Teaching points for cleansing perineal tears and hemorrhoids after birth.",
+  "a": "Perform hand hygiene before and after cleaning perineum and changing pads.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-K21-1",
+  "q": "What is postpartum hemorrhage (PPH) commonly defined as after a vaginal birth and after a C-section?",
+  "a": "Postpartum hemorrhage is often defined as 500 mL or more blood loss after a vaginal birth and 1000 mL or more blood loss after a C-section.\n⚠ ملاحظة من المحاضرة: تعريف الكتاب لنزيف ما بعد الولادة هو فقدان أكثر من 500 مل خلال أول 24 ساعة بعد الولادة.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-T2-1",
+  "q": "The 4 \"T\"s serve as a reminder of factors associated with PPH.",
+  "a": "Tone, trauma, tissue, and thrombin. A lack of uterine tone (atony) and genital tract trauma are the most common conditions that cause postpartum hemorrhage.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-K21-14",
+  "q": "When is the placenta considered retained?",
+  "a": "The placenta is considered retained if it has not been delivered within 30 minutes after birth.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-PA-5",
+  "q": "What state should the uterus be in to prevent excessive bleeding and hemorrhage?",
+  "a": "A firm and contracted uterus.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-K21-2",
+  "q": "What lab-based change can also define postpartum hemorrhage?",
+  "a": "Postpartum hemorrhage may also be defined as a 10% change in hematocrit from the time of admission for labor until postpartum.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-K21-15",
+  "q": "What does retained placenta mean clinically?",
+  "a": "It means that part of the placenta is still attached to the uterus despite gentle traction on the umbilical cord and uterine massage.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-N3-6",
+  "q": "4 T's and causes of postpartum hemorrhage.",
+  "a": "Tone: uterine atony, distended bladder. Tissue: retained placenta and clots; uterine subinvolution. Trauma: lacerations, hematoma, inversion, rupture. Thrombin: coagulopathy (pre-existing or acquired).",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-PP-15",
+  "q": "When reviewing self-care instructions with a postpartum client, the nurse emphasizes the need for the client to report heavy or excessive bleeding. The nurse would describe \"heavy bleeding saturating one sanitary pad\" within which time span?",
+  "a": "1 hour.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-K21-39",
+  "q": "What causes subinvolution of the uterus?",
+  "a": "Causes include retained placental fragments and pelvic infection.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-K21-5",
+  "q": "When is the greatest risk period for postpartum hemorrhage?",
+  "a": "The greatest risk for postpartum hemorrhage is during the first hour after birth.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-K21-16",
+  "q": "What are initial interventions for retained placenta?",
+  "a": "The first intervention is manual separation and removal, where the provider reaches into the uterus and gently separates the placenta from the uterine wall. Pitocin may also be given to create stronger contractions so the uterus expels the placenta.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-N6-38",
+  "q": "The most frequent cause of excessive bleeding after birth is?",
+  "a": "Uterine atony.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-PP-29",
+  "q": "The nurse is reviewing the medical record of a client who is 6 weeks postpartum and came for a follow up appointment with her health care provider. The client's uterus is enlarged and soft, and she is experiencing vaginal bleeding. Based on the findings, which condition would the nurse most likely suspect?",
+  "a": "Uterine subinvolution.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-K21-76",
+  "q": "What is endometritis?",
+  "a": "It is an infection of the lining of the uterus, usually at the placental site.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-N3-36",
+  "q": "Signs and symptoms of metritis.",
+  "a": "Tenderness or pain lower abdomen on one or both sides; temperature elevation (>38° C); foul-smelling lochia; anorexia; nausea; fatigue and lethargy; leukocytosis and elevated sedimentation rate.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-K21-75",
+  "q": "What is the most common postpartum infection?",
+  "a": "Endometritis.",
+  "src": "Special O.Nursing Questions"
+ },
+ {
+  "id": "Q-K21-77",
+  "q": "How is endometritis treated?",
+  "a": "With IV broad-spectrum antibiotics, rest, hydration, and pain relief.",
+  "src": "Special O.Nursing Questions"
+ }
+];
+
+/* ================= shared helpers ================= */
+function $(id){ return document.getElementById(id); }
+function scrollTop(){ try{ window.scrollTo(0,0); }catch(e){} }
+function esc(s){ const d=document.createElement("div"); d.textContent=s; return d.innerHTML; }
+function srcTag(src, special){
+  return '<span class="srctag' + (special ? ' special' : '') + '">المصدر: ' + esc(src) + '</span>';
+}
+
+/* ================= screens ================= */
+const SCREENS = {'home':'screen-home','settings':'screen-settings','study':'screen-study',
+                 'summary':'screen-summary','quiz':'quiz','results':'results'};
+function showScreen(name){
+  Object.keys(SCREENS).forEach(k=>{
+    const el = $(SCREENS[k]);
+    if(!el) return;
+    const on = (k === name);
+    el.classList.toggle('active', on);
+    el.classList.toggle('hidden', !on);
+  });
+  if(name === 'home'){ const h = $('home'); if(h) h.classList.remove('hidden'); }
+  scrollTop();
+}
+
+/* ================= toast + rotating dhikr ================= */
+const DHIKR = ['سبحان الله وبحمده','سبحان الله العظيم','اللهم صل وسلم على سيدنا محمد'];
+let dhIdx = 0;
+setInterval(() => {
+  const el = $('dhikr');
+  if(!el) return;
+  el.classList.add('fade');
+  setTimeout(() => { dhIdx = (dhIdx+1) % DHIKR.length; el.textContent = DHIKR[dhIdx]; el.classList.remove('fade'); }, 450);
+}, 4000);
+let toastTimer = null;
+function toast(msg){
+  const t = $('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+function ringSet(el, pct){
+  const C = 2 * Math.PI * 24;
+  el.style.strokeDasharray = C;
+  el.style.strokeDashoffset = C * (1 - pct/100);
+}
+function ringSetBig(el, r, pct){
+  const C = 2 * Math.PI * r;
+  el.style.strokeDasharray = C;
+  el.style.strokeDashoffset = C * (1 - pct/100);
+}
+function shuffle(a){
+  for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+}
+
+/* ================= flashcard data (from QUESTIONS + AM arrays) ================= */
+const FC_KNOWN_KEY = 'onursing_m4_fc_known_v1';
+const FC_MISSED_KEY = 'onursing_m4_fc_missed_v1';
+let fcKnown = new Set(JSON.parse(localStorage.getItem(FC_KNOWN_KEY) || '[]'));
+let fcMissed = new Set(JSON.parse(localStorage.getItem(FC_MISSED_KEY) || '[]'));
+function saveFcKnown(){ try{ localStorage.setItem(FC_KNOWN_KEY, JSON.stringify([...fcKnown])); }catch(e){} }
+function saveFcMissed(){ try{ localStorage.setItem(FC_MISSED_KEY, JSON.stringify([...fcMissed])); }catch(e){} }
+
+const FC_SECTIONS = [
+  {name:"Define / Short notes", cards: QUESTIONS.filter(q=>q.type==="written" && q.id[0]==="D").map(q=>({id:q.id, q:q.q, qHtml:esc(q.q), aHtml:'<div class="ans-box"><div class="ans-label">✅ الإجابة النموذجية</div><p style="white-space:pre-line;">'+esc(q.model)+'</p></div>', sec:"Define / Short notes", src:q.src, special:false}))},
+  {name:"List / Enumerate", cards: QUESTIONS.filter(q=>q.type==="written" && q.id[0]==="L").map(q=>({id:q.id, q:q.q, qHtml:esc(q.q), aHtml:'<div class="ans-box"><div class="ans-label">✅ الإجابة النموذجية</div><p style="white-space:pre-line;">'+esc(q.model)+'</p></div>', sec:"List / Enumerate", src:q.src, special:false}))},
+  {name:"Special O.Nursing Questions", cards: AM_MCQ.map(item=>({id:item.id, q:item.q, qHtml:esc(item.q)+'<ol class="am-opts" type="a">'+item.options.map(o=>"<li>"+esc(o)+"</li>").join("")+"</ol>", aHtml:'<div class="ans-box"><div class="ans-label">✅ الإجابة الصحيحة</div><p><b>Correct answer: '+esc(item.options[item.correct])+'</b></p><p>'+esc(item.explain)+'</p></div>', sec:"Special O.Nursing Questions", src:item.src, special:true}))},
+  {name:"Special O.Nursing Questions", cards: AM_QA.map(item=>({id:item.id, q:item.q, qHtml:esc(item.q), aHtml:'<div class="ans-box"><div class="ans-label">✅ الإجابة</div><p style="white-space:pre-line;">'+esc(item.a)+'</p></div>', sec:"Special O.Nursing Questions", src:item.src, special:true}))},
+];;
+const allFcCards = [];
+FC_SECTIONS.forEach((sec, si) => sec.cards.forEach(c => allFcCards.push({...c, secIdx: si})));
+const fcCardById = Object.fromEntries(allFcCards.map(c => [c.id, c]));
+
+/* home sections (topic cards): 0 MCQ, 1 True/False, 2 Essay, 3 Special */
+const HOME_SECTIONS = [
+  {name:"MCQ", meta:"اختيار من متعدد", count:12, kind:"scored", type:"mcq", cardId:"sec-mcq"},
+  {name:"True / False", meta:"صح وخطأ", count:24, kind:"scored", type:"tf", cardId:"sec-tf"},
+  {name:"Essay Flashcards", meta:"بطاقات مقالية", count:38, kind:"fc", group:"essay", cardId:"flashcards"},
+  {name:"Special O.Nursing Questions", meta:"50 سؤال", count:50, kind:"fc", group:"special", cardId:"special"},
+];
+let selected = new Set(HOME_SECTIONS.map((_, i) => i));
+let fcQueue = [], fcIdx = 0, fcFlipped = false;
+let optScope = 'all', optShuffle = 'off';
+let requeueMode = 'none', requeueMins = 3;
+let endQueue = [], dueList = [], reviewIds = new Set();
+
+/* ================= scored-quiz globals (timer-snippet hooks — DO NOT rename) ================= */
+const LVL = {easy:"سهل", med:"متوسط", hard:"صعب"};
+const LVLCLS = {easy:"easy", med:"med", hard:"hard"};
+const KEY = "onursing_maternity_module4_progress_v1";
+let selectedLvl = "all";
+let queue = [], idx = 0, score = 0, answered = 0, results = [];
+let levelStats = {easy:{t:0,c:0}, med:{t:0,c:0}, hard:{t:0,c:0}};
+let locked = false;
+
+function loadProg(){ try{ return JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ return {}; } }
+function saveProg(p){ try{ localStorage.setItem(KEY, JSON.stringify(p)); }catch(e){} }
+
+/* ================= HOME ================= */
+function sectionStats(si){
+  const sec = HOME_SECTIONS[si];
+  if(sec.kind === "scored"){
+    const p = loadProg();
+    const done = p.done || {}, correct = p.correct || {};
+    const ids = QUESTIONS.filter(q=>q.type===sec.type).map(q=>q.id);
+    const a = ids.filter(id=>done[id]).length;
+    const c = ids.filter(id=>correct[id]).length;
+    return {total: ids.length, known: a, correct: c};
+  }
+  const ids = sec.group === "essay"
+    ? allFcCards.filter(c=>c.secIdx < 2).map(c=>c.id)
+    : allFcCards.filter(c=>c.secIdx >= 2).map(c=>c.id);
+  const k = ids.filter(id=>fcKnown.has(id)).length;
+  return {total: ids.length, known: k};
+}
+function renderTopics(){
+  const list = $('topic-list');
+  list.innerHTML = '';
+  HOME_SECTIONS.forEach((sec, i) => {
+    const {total, known: k, correct} = sectionStats(i);
+    const pct = total ? Math.round(k/total*100) : 0;
+    const card = document.createElement('div');
+    card.className = 'topic-card' + (selected.has(i) ? ' checked' : '');
+    card.id = sec.cardId;
+    const meta = sec.kind === "scored"
+      ? (sec.meta + ' • ' + k + '/' + total + ' answered' + (correct ? ' • ' + correct + ' صح' : ''))
+      : (sec.meta + ' • ' + k + '/' + total + ' known');
+    card.innerHTML =
+      '<div class="topic-card-top">' +
+        '<div class="topic-check">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"><path d="M4 12l5 5L20 6"/></svg>' +
+        '</div>' +
+        '<div class="topic-progress-ring">' +
+          '<svg viewBox="0 0 30 30">' +
+            '<circle class="bg-ring" cx="15" cy="15" r="12"/>' +
+            '<circle class="fg-ring" cx="15" cy="15" r="12"/>' +
+          '</svg>' +
+          '<div class="pct">' + pct + '%</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="topic-info">' +
+        '<div class="t-name" dir="ltr" style="text-align:left">' + sec.name + '</div>' +
+        '<div class="t-meta">' + meta + '</div>' +
+      '</div>';
+    const fg = card.querySelector('.fg-ring');
+    const C = 2*Math.PI*12;
+    fg.style.strokeDasharray = C;
+    fg.style.strokeDashoffset = C*(1-pct/100);
+    card.addEventListener('click', () => {
+      selected.has(i) ? selected.delete(i) : selected.add(i);
+      renderTopics(); updateSelBar();
+    });
+    list.appendChild(card);
+  });
+}
+function updateSelBar(){
+  $('sel-count').textContent = selected.size + ' أقسام محددة';
+  $('btn-start').disabled = selected.size === 0;
+}
+function updateHomeStats(){
+  $('stat-total').textContent = QUESTIONS.filter(q=>q.type!=="written").length;
+  $('stat-topics').textContent = allFcCards.length;
+  $('stat-known').textContent = Math.round(fcKnown.size/allFcCards.length*100) + '%';
+  renderMissedBin();
+}
+function renderMissedBin(){
+  const arr = allFcCards.filter(c => fcMissed.has(c.id));
+  $('missed-count').textContent = arr.length + ' بطاقة مستنية مراجعة';
+  $('btn-review-missed').disabled = arr.length === 0;
+}
+$('btn-review-missed').addEventListener('click', () => {
+  fcQueue = allFcCards.filter(c => fcMissed.has(c.id));
+  if(!fcQueue.length) return;
+  fcIdx = 0; endQueue = []; dueList = []; reviewIds = new Set();
+  showScreen('study');
+  renderFcCard();
+  toast('مراجعة سريعة للبطاقات اللي مش عارفها ⚡');
+});
+$('btn-select-all').addEventListener('click', () => {
+  selected = selected.size === HOME_SECTIONS.length ? new Set() : new Set(HOME_SECTIONS.map((_,i)=>i));
+  renderTopics(); updateSelBar();
+});
+$('btn-reset-all').addEventListener('click', () => {
+  let ok = true;
+  if(typeof confirm === 'function') ok = confirm('متأكد عايز تمسح كل التقدم المحفوظ؟');
+  if(!ok) return;
+  fcKnown = new Set(); saveFcKnown(); fcMissed = new Set(); saveFcMissed();
+  try{ localStorage.removeItem(KEY); }catch(e){}
+  renderTopics(); updateHomeStats(); refreshHome();
+});
+function refreshHome(){
+  const p = loadProg();
+  const done = p.done || {}, correct = p.correct || {};
+  const n = Object.keys(done).length;
+  const c = Object.keys(correct).length;
+  $('home-stats').textContent = n ? ("تقدّمك: أجبت على " + n + " سؤال من 36 — إجابات صحيحة: " + c + (p.best!=null ? (" • أفضل نتيجة: " + p.best + "%") : "")) : "ابدأ من السهل وتدرّج — كل سؤال معه تلميح وشرح.";
+  $('btn-resume').classList.toggle('hidden', !n || n>=36);
+}
+document.querySelectorAll("#levels .lvl").forEach(b=>{
+  b.addEventListener("click", ()=>{
+    document.querySelectorAll("#levels .lvl").forEach(x=>x.classList.remove("on"));
+    b.classList.add("on"); selectedLvl = b.dataset.lvl;
+  });
+});
+/* primary Start: scored sections -> timed quiz (full 36, timer rule);
+   flashcards only -> settings screen for the flip-card study flow */
+function onPrimaryStart(){
+  const scoredSel = selected.has(0) || selected.has(1);
+  const fcSel = selected.has(2) || selected.has(3);
+  if(scoredSel){ startQuiz(false); return; }
+  if(fcSel){ renderSettings(); showScreen('settings'); return; }
+}
+$('btn-start').addEventListener('click', onPrimaryStart);
+$('btn-resume').addEventListener('click', ()=>startQuiz(true));
+
+/* ================= SETTINGS (flashcard study) ================= */
+function fcSelectedGroups(){
+  const groups = [];
+  if(selected.has(2)) groups.push(0, 1);
+  if(selected.has(3)) groups.push(2, 3);
+  return groups;
+}
+function queuePreview(){
+  let cards = [];
+  fcSelectedGroups().forEach(i => cards.push(...FC_SECTIONS[i].cards));
+  if(optScope === 'unknown') cards = cards.filter(c => !fcKnown.has(c.id));
+  return cards;
+}
+function renderSettings(){
+  const cards = [];
+  fcSelectedGroups().forEach(i => cards.push(...FC_SECTIONS[i].cards));
+  const k = cards.filter(c => fcKnown.has(c.id)).length;
+  const pct = cards.length ? Math.round(k/cards.length*100) : 0;
+  ringSet($('settings-ring'), pct);
+  $('settings-pct').textContent = pct + '%';
+  $('settings-progress-txt').textContent = k + ' من ' + cards.length + ' بطاقة معروفة';
+  updateQueueNote();
+}
+function updateQueueNote(){
+  const n = queuePreview().length;
+  $('queue-note').textContent = n ? ('عدد البطاقات في الجلسة: ' + n) : 'مفيش بطاقات — كل البطاقات المحددة معروفة ✓';
+  $('btn-start-study').disabled = n === 0;
+}
+document.querySelectorAll('.opt-btn').forEach(b => {
+  b.addEventListener('click', () => {
+    const g = b.dataset.group;
+    document.querySelectorAll('.opt-btn[data-group="' + g + '"]').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    if(g === 'scope') optScope = b.dataset.val;
+    if(g === 'shuffle') optShuffle = b.dataset.val;
+    if(g === 'requeue'){
+      requeueMode = b.dataset.val;
+      $('requeue-time-row').classList.toggle('disabled', requeueMode !== 'time');
+    }
+    updateQueueNote();
+  });
+});
+document.querySelectorAll('.time-chip').forEach(ch => {
+  ch.addEventListener('click', () => {
+    document.querySelectorAll('.time-chip').forEach(x => x.classList.remove('active'));
+    ch.classList.add('active');
+    requeueMins = parseInt(ch.dataset.mins, 10);
+  });
+});
+$('btn-back-home').addEventListener('click', () => { renderTopics(); updateHomeStats(); showScreen('home'); });
+$('btn-clear-selection-progress').addEventListener('click', () => {
+  fcSelectedGroups().forEach(i => FC_SECTIONS[i].cards.forEach(c => fcKnown.delete(c.id)));
+  saveFcKnown(); renderSettings(); renderTopics(); updateHomeStats();
+});
+$('btn-start-study').addEventListener('click', () => {
+  fcQueue = queuePreview();
+  if(optShuffle === 'on') shuffle(fcQueue);
+  fcIdx = 0; endQueue = []; dueList = []; reviewIds = new Set();
+  showScreen('study');
+  renderFcCard();
+});
+
+/* ================= STUDY (flip flashcards) ================= */
+function renderFcCard(){
+  const c = fcQueue[fcIdx];
+  if(!c){ showFcSummary(); return; }
+  fcFlipped = false;
+  $('flashcard').classList.remove('flipped');
+  $('mark-row').classList.add('hidden');
+  $('fc-qnum').textContent = c.id.toUpperCase();
+  $('fc-qtitle').innerHTML = c.qHtml;
+  $('fc-src').innerHTML = srcTag(c.src, c.special);
+  $('fc-answer').innerHTML = c.aHtml;
+  $('card-sec').textContent = c.sec;
+  $('card-ext').classList.add('hidden');
+  $('card-review').classList.toggle('hidden', !reviewIds.has(c.id));
+  $('card-known').classList.toggle('hidden', !fcKnown.has(c.id));
+  $('qcounter').textContent = (fcIdx+1) + ' / ' + fcQueue.length;
+  $('qbar-fill').style.width = (fcQueue.length ? (fcIdx/fcQueue.length*100) : 0) + '%';
+  $('btn-prev').disabled = fcIdx === 0;
+  $('fc-answer').scrollTop = 0;
+}
+$('flashcard').addEventListener('click', () => {
+  fcFlipped = !fcFlipped;
+  $('flashcard').classList.toggle('flipped', fcFlipped);
+  $('mark-row').classList.toggle('hidden', !fcFlipped);
+});
+$('btn-know').addEventListener('click', e => {
+  e.stopPropagation();
+  const id = fcQueue[fcIdx].id;
+  fcKnown.add(id); saveFcKnown();
+  fcMissed.delete(id); saveFcMissed();
+  dueList = dueList.filter(d => d.id !== id);
+  reviewIds.delete(id);
+  nextFcCard();
+});
+$('btn-dunno').addEventListener('click', e => {
+  e.stopPropagation();
+  const id = fcQueue[fcIdx].id;
+  fcKnown.delete(id); saveFcKnown();
+  fcMissed.add(id); saveFcMissed();
+  if(requeueMode === 'end'){
+    if(!endQueue.includes(id)) endQueue.push(id);
+  } else if(requeueMode === 'time'){
+    dueList = dueList.filter(d => d.id !== id);
+    dueList.push({id, due: Date.now() + requeueMins*60000});
+    toast('هترجعلك بعد ' + (requeueMins === 1 ? 'دقيقة' : requeueMins + ' دقايق') + ' ⏰');
+  }
+  nextFcCard();
+});
+function pumpDue(){
+  const now = Date.now();
+  const dueNow = dueList.filter(d => d.due <= now);
+  if(!dueNow.length) return;
+  dueList = dueList.filter(d => d.due > now);
+  const remaining = new Set(fcQueue.slice(fcIdx+1).map(c => c.id));
+  const insert = [];
+  dueNow.forEach(d => {
+    if(!remaining.has(d.id) && fcCardById[d.id]){
+      insert.push(fcCardById[d.id]); remaining.add(d.id); reviewIds.add(d.id);
+    }
+  });
+  if(insert.length) fcQueue = fcQueue.slice(0, fcIdx+1).concat(insert, fcQueue.slice(fcIdx+1));
+}
+function nextFcCard(){
+  pumpDue();
+  if(fcIdx < fcQueue.length - 1){ fcIdx++; renderFcCard(); }
+  else if(requeueMode === 'end' && endQueue.length){
+    fcQueue = endQueue.map(id => fcCardById[id]).filter(Boolean);
+    endQueue = [];
+    reviewIds = new Set(fcQueue.map(c => c.id));
+    fcIdx = 0;
+    toast('جولة مراجعة للبطاقات الغلط 🔁');
+    renderFcCard();
+  }
+  else {
+    $('qbar-fill').style.width = '100%';
+    setTimeout(showFcSummary, 350);
+  }
+}
+$('btn-next-card').addEventListener('click', nextFcCard);
+$('btn-prev').addEventListener('click', () => { if(fcIdx > 0){ fcIdx--; renderFcCard(); } });
+$('btn-shuffle').addEventListener('click', () => {
+  const rest = fcQueue.slice(fcIdx + 1);
+  shuffle(rest);
+  fcQueue = fcQueue.slice(0, fcIdx + 1).concat(rest);
+  renderFcCard();
+});
+$('btn-exit-study').addEventListener('click', () => {
+  renderTopics(); updateHomeStats(); showScreen('home');
+});
+document.addEventListener('keydown', e => {
+  if(!$('screen-study').classList.contains('active')) return;
+  if(e.code === 'Space'){ e.preventDefault(); $('flashcard').click(); }
+  if(e.code === 'ArrowLeft'){ $('btn-next-card').click(); }
+  if(e.code === 'ArrowRight'){ $('btn-prev').click(); }
+});
+
+/* ================= SUMMARY (flashcards) ================= */
+function showFcSummary(){
+  const k = fcQueue.filter(c => fcKnown.has(c.id)).length;
+  const total = fcQueue.length;
+  const pct = total ? Math.round(k/total*100) : 0;
+  ringSetBig($('results-ring'), 65, pct);
+  setTimeout(() => { $('results-pct').textContent = pct + '%'; }, 60);
+  $('results-known').textContent = k;
+  $('results-unknown').textContent = total - k;
+  $('results-total').textContent = total;
+  $('results-title').textContent = pct === 100 ? 'ممتاز! كلها معروفة 🎉' : pct >= 70 ? 'عاش! قربت تخلصها 💪' : 'خلصت الجلسة 🩺';
+  $('results-sub').textContent = pct === 100 ? 'مفيش حاجة تراجعها' : 'راجع البطاقات اللي لسه مش عارفها تحت';
+
+  const list = $('review-list');
+  list.innerHTML = '';
+  const unknown = fcQueue.filter(c => !fcKnown.has(c.id));
+  if(!unknown.length){
+    list.innerHTML = '<div class="empty-review">مفيش بطاقات محتاجة مراجعة — كله تمام ✓</div>';
+  } else {
+    unknown.forEach(c => {
+      const item = document.createElement('div');
+      item.className = 'review-item';
+      item.innerHTML = '<div class="rq">' + c.id.toUpperCase() + '. ' + c.qHtml + '</div>' +
+        '<div class="ra">' + c.aHtml + '</div>';
+      item.addEventListener('click', () => item.classList.toggle('open'));
+      list.appendChild(item);
+    });
+  }
+  renderTopics(); updateHomeStats();
+  showScreen('summary');
+}
+$('btn-retry-unknown').addEventListener('click', () => {
+  fcQueue = fcQueue.filter(c => !fcKnown.has(c.id));
+  if(!fcQueue.length){ showScreen('home'); return; }
+  if(optShuffle === 'on') shuffle(fcQueue);
+  fcIdx = 0;
+  showScreen('study');
+  renderFcCard();
+});
+$('btn-go-home-2').addEventListener('click', () => { renderTopics(); updateHomeStats(); showScreen('home'); });
+$('btn-summary-exit').addEventListener('click', () => { renderTopics(); updateHomeStats(); showScreen('home'); });
+
+/* ================= SCORED QUIZ (MCQ + True/False, flip-card design) ================= */
+function buildQueue(resume){
+  /* The timed attempt always runs the FULL 30 scored questions (timer rule);
+     the level filter only narrows practice, and the snippet forces 'all'
+     for a timed start anyway (v2 parity). */
+  let pool = QUESTIONS.filter(q => q.type!=="written" && (selectedLvl==="all" || q.level===selectedLvl));
+  if(resume){
+    const p = loadProg(); const done = p.done || {};
+    pool = pool.filter(q => !done[q.id]);
+    if(!pool.length){ pool = QUESTIONS.filter(q => q.type!=="written" && (selectedLvl==="all" || q.level===selectedLvl)); }
+  }
+  return pool.slice();
+}
+function startQuiz(resume){
+  queue = buildQueue(resume); idx = 0; score = 0; answered = 0; results = [];
+  levelStats = {easy:{t:0,c:0}, med:{t:0,c:0}, hard:{t:0,c:0}};
+  queue.forEach(q=>{ if(q.type!=="written") levelStats[q.level].t++; });
+  showScreen('quiz');
+  renderQ();
+}
+function cur(){ return queue[idx]; }
+function renderQ(){
+  const q = cur(); locked = false;
+  $("quiz-card").classList.remove("flipped");
+  $("prog-fill").style.width = (idx/queue.length*100) + "%";
+  $("q-count").textContent = (idx+1) + " / " + queue.length;
+  $("q-badge").innerHTML = '<span class="badge '+LVLCLS[q.level]+'">'+LVL[q.level]+'</span>';
+  $("q-score").textContent = "صح: " + score + " / " + answered;
+  $("quiz-sec").textContent = q.type === "mcq" ? "MCQ" : "True / False";
+  $("quiz-qnum").textContent = q.id.toUpperCase();
+  $("q-stem").innerHTML = q.q + (q.ar ? '<span class="ar-note">'+q.ar+'</span>' : "");
+  $("q-src").innerHTML = '<span class="srctag">المصدر: ' + esc(q.src || "Special Notes") + '</span>';
+  $("q-hint").classList.remove("show"); $("q-hint").textContent = q.hint || "";
+  $("btn-hint").style.display = q.hint ? "" : "none";
+  const ex = $("q-explain"); ex.classList.remove("show","ok","no"); ex.innerHTML = "";
+  const mo = $("q-model"); mo.classList.remove("show"); mo.textContent = "";
+  $("btn-next").classList.add("hidden"); $("btn-finish").classList.add("hidden");
+  const body = $("q-body"); body.innerHTML = "";
+  if(q.type === "mcq"){
+    const box = document.createElement("div"); box.className = "opts";
+    q.options.forEach((op,i)=>{
+      const b = document.createElement("button"); b.className = "opt"; b.textContent = op;
+      b.addEventListener("click", ()=>answerMcq(i, b)); box.appendChild(b);
+    });
+    body.appendChild(box);
+  } else if(q.type === "tf"){
+    const box = document.createElement("div"); box.className = "tf";
+    [["True", true], ["False", false]].forEach(([label, val])=>{
+      const b = document.createElement("button"); b.className = "opt"; b.textContent = label;
+      b.addEventListener("click", ()=>answerTf(val, b)); box.appendChild(b);
+    });
+    body.appendChild(box);
+  }
+}
+$("btn-hint").addEventListener("click", ()=>{ $("q-hint").classList.toggle("show"); });
+/* tap the flipped card to flip back to the question */
+$("quiz-card").addEventListener("click", (e)=>{
+  /* an option tap bubbles up here — it must NOT flip the card back, or the
+     explanation would vanish the instant the student answers (bug found
+     by the fold-in harness 2026-11-23) */
+  if(e.target.closest(".opt")) return;
+  if($("quiz-card").classList.contains("flipped")) $("quiz-card").classList.remove("flipped");
+});
+function markProgress(id, ok){
+  const p = loadProg(); p.done = p.done || {}; p.correct = p.correct || {};
+  p.done[id] = true; if(ok) p.correct[id] = true; saveProg(p);
+}
+function finishAnswer(ok){
+  answered++; if(ok) score++;
+  markProgress(cur().id, ok);
+  results.push({id:cur().id, ok:ok});
+  $("q-score").textContent = "صح: " + score + " / " + answered;
+  showNav();
+}
+function showNav(){
+  if(idx < queue.length-1){ $("btn-next").classList.remove("hidden"); }
+  else { $("btn-finish").classList.remove("hidden"); }
+}
+function answerMcq(i, btn){
+  if(locked) return; locked = true;
+  const q = cur(); const ok = (i === q.correct);
+  document.querySelectorAll("#q-body .opt").forEach((el, j)=>{
+    el.disabled = true;
+    if(j === q.correct) el.classList.add("correct");
+    if(j === i && !ok) el.classList.add("wrong");
+  });
+  const ex = $("q-explain");
+  ex.innerHTML = (ok ? "<b>✓ إجابة صحيحة.</b> " : "<b>✗ إجابة خاطئة.</b> الصح: <b>" + q.options[q.correct] + "</b><br>") + q.explain;
+  ex.classList.add("show", ok ? "ok" : "no");
+  finishAnswer(ok);
+  $("quiz-card").classList.add("flipped");
+}
+function answerTf(val, btn){
+  if(locked) return; locked = true;
+  const q = cur(); const ok = (val === q.correct);
+  document.querySelectorAll("#q-body .opt").forEach(el=>{
+    el.disabled = true;
+    const v = el.textContent === "True";
+    if(v === q.correct) el.classList.add("correct");
+    if(el === btn && !ok) el.classList.add("wrong");
+  });
+  const ex = $("q-explain");
+  ex.innerHTML = (ok ? "<b>✓ إجابة صحيحة.</b> " : "<b>✗ إجابة خاطئة.</b> الصح: <b>" + (q.correct ? "True" : "False") + "</b><br>") + q.explain;
+  ex.classList.add("show", ok ? "ok" : "no");
+  finishAnswer(ok);
+  $("quiz-card").classList.add("flipped");
+}
+$("btn-next").addEventListener("click", ()=>{ idx++; renderQ(); });
+$("btn-finish").addEventListener("click", showResults);
+$("btn-quiz-exit").addEventListener("click", ()=>{ renderTopics(); updateHomeStats(); refreshHome(); showScreen('home'); });
+function showResults(){
+  showScreen('results');
+  const total = results.length || 1;
+  const pct = Math.round(score/total*100);
+  $("res-pct").textContent = pct + "%";
+  const ring = $("ring-fg");
+  ring.style.strokeDashoffset = 408 - (408*pct/100);
+  const p = loadProg(); if(p.best==null || pct > p.best){ p.best = pct; saveProg(p); }
+  let msg = pct>=90 ? "ممتاز! الموضوع ده بقى في جيبك." : pct>=70 ? "كويس جداً — راجع الغلطات وهتبقى ممتاز." : pct>=50 ? "بداية كويسة — راجع الشرح والغلطات وحاول تاني." : "محتاج مراجعة — ارجع للشرح في الملف وحاول تاني.";
+  $("res-line").innerHTML = "أجبت صح على <b>" + score + "</b> من <b>" + total + "</b> سؤال<br>" + msg;
+  let rows = "<tr><th>المستوى</th><th>صح</th><th>من</th></tr>";
+  const agg = {easy:{t:0,c:0}, med:{t:0,c:0}, hard:{t:0,c:0}};
+  results.forEach(r=>{ const q = QUESTIONS.find(x=>x.id===r.id); if(!q) return; agg[q.level].t++; if(r.ok) agg[q.level].c++; });
+  ["easy","med","hard"].forEach(l=>{ if(agg[l].t) rows += "<tr><td>"+LVL[l]+"</td><td>"+agg[l].c+"</td><td>"+agg[l].t+"</td></tr>"; });
+  $("res-table").innerHTML = rows;
+}
+$("btn-retry").addEventListener("click", ()=>startQuiz(false));
+$("btn-home").addEventListener("click", ()=>{
+  renderTopics(); updateHomeStats(); refreshHome(); showScreen('home');
+});
+
+/* O.Nursing — QR-only protection: block copying, right-click, printing */
+document.addEventListener("contextmenu", function(e){ e.preventDefault(); });
+document.addEventListener("copy", function(e){ e.preventDefault(); });
+document.addEventListener("cut", function(e){ e.preventDefault(); });
+document.addEventListener("dragstart", function(e){ e.preventDefault(); });
+document.addEventListener("keydown", function(e){
+  if((e.ctrlKey || e.metaKey) && ["c","x","u","s","p","a"].indexOf(e.key.toLowerCase()) !== -1){ e.preventDefault(); }
+});
+
+/* ---------- INIT ---------- */
+renderTopics(); updateSelBar(); updateHomeStats(); refreshHome();
+</script>
+<script src="timer-snippet-v2.js"></script>
+</body>
+</html>
